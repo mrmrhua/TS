@@ -1,0 +1,85 @@
+			<div class="page-title">
+				<div class="title-env">
+					<h1 class="title">待审核资料</h1>
+					<p class="description">学生上传的资料需要经过教师审核才能共享</p>
+				</div>
+				
+				<div class="breadcrumb-env">
+					<ol class="breadcrumb bc-1">
+						<li>
+							<a href="index.html"><i class="fa-home"></i>主页</a>
+						</li>
+						<li>
+							<a href="#">资料</a>
+						</li>
+						<li>
+							<strong>待审核资料</strong>
+						</li>
+					</ol>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">待审核资料列表</h3>
+					
+					<div class="panel-options">
+						<a href="#" data-toggle="panel">
+							<span class="collapse-icon">&ndash;</span>
+							<span class="expand-icon">+</span>
+						</a>
+					</div>
+				</div>
+				<div class="panel-body">
+					
+					<script type="text/javascript">
+					jQuery(document).ready(function($)
+					{
+						$("#example-1").dataTable({
+							aLengthMenu: [
+								[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]
+							]
+						});
+					});
+					</script>
+					
+					<table id="example-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th>资料名称</th>
+								<th>共享范围</th>
+								<th>上传人</th>
+								<th>上传日期</th>
+								<th>审核状态</th>								
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><a href="#"><strong>SRS模板.docx</strong></a></td>
+								<td>软件需求分析与设计-周五3、4、5</td>
+								<td>王尼玛</td>
+								<td>2015/9/1</td>
+								<td><span class="label label-warning">未审核</span></td>
+								<td><a href="#">下载</a>
+								<a href="#">在线查看</a>
+								<a href="#">审核通过</a>
+								<a href="#">审核不通过</a>
+								<a href="#">删除</a></td>
+							</tr>
+							<tr>
+								<td><a href="#"><strong>老司机的福利.torrent</strong></a></td>
+								<td>软件需求分析与设计-周五3、4、5-G10</td>
+								<td>王尼玛</td>
+								<td>2015/9/1</td>
+								<td><span class="label label-danger">不通过</span></td>
+								<td><a href="#">下载</a>
+								<a href="#">在线查看</a>
+								<a href="#">审核通过</a>
+								<a href="#">审核不通过</a>
+								<a href="#">删除</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>

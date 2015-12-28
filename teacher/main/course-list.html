@@ -1,0 +1,78 @@
+			<div class="page-title">
+				<div class="title-env">
+					<h1 class="title">课程列表</h1>
+					<p class="description">当前教师用户正在教授的课程列表</p>
+				</div>
+				
+				<div class="breadcrumb-env">
+					<ol class="breadcrumb bc-1">
+						<li>
+							<a href="index.html"><i class="fa-home"></i>主页</a>
+						</li>
+						<li>
+							<a href="course-list.html">课程</a>
+						</li>
+						<li>
+							<strong>课程列表</strong>
+						</li>
+					</ol>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">课程列表</h3>
+					
+					<div class="panel-options">
+						<a href="#" data-toggle="panel">
+							<span class="collapse-icon">&ndash;</span>
+							<span class="expand-icon">+</span>
+						</a>
+					</div>
+				</div>
+				<div class="panel-body">
+					
+					<script type="text/javascript">
+					jQuery(document).ready(function($)
+					{
+						$("#example-1").dataTable({
+							aLengthMenu: [
+								[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]
+							]
+						});
+					});
+					</script>
+					
+					<table id="example-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th>课程名称</th>
+								<th>学期</th>
+								<th>人数</th>
+								<th>班级数</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><a href="#"><strong>软件需求分析与设计</strong></a></td>
+								<td>秋冬</td>
+								<td>80</td>
+								<td>1</td>
+								<td><a href="#">详细</a>
+								<a href="#">编辑</a>
+								<a href="#">删除</a></td>
+							</tr>
+							<tr>
+								<td><a href="#"><strong>项目管理与案例分析</strong></a></td>
+								<td>秋冬</td>
+								<td>80</td>
+								<td>2</td>
+								<td><a href="#">详细</a>
+								<a href="#">编辑</a>
+								<a href="#">删除</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>

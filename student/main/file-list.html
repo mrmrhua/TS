@@ -1,0 +1,90 @@
+			<div class="page-title">
+				<div class="title-env">
+					<h1 class="title">资料列表</h1>
+					<p class="description">当前用户能下载的资料列表</p>
+				</div>
+				
+				<div class="breadcrumb-env">
+					<ol class="breadcrumb bc-1">
+						<li>
+							<a href="index.php"><i class="fa-home"></i>主页</a>
+						</li>
+						<li>
+							<a href="#">资料</a>
+						</li>
+						<li>
+							<strong>资料列表</strong>
+						</li>
+					</ol>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">资料列表</h3>
+					
+					<div class="panel-options">
+						<a href="#" data-toggle="panel">
+							<span class="collapse-icon">&ndash;</span>
+							<span class="expand-icon">+</span>
+						</a>
+					</div>
+				</div>
+				<div class="panel-body">
+					
+					<script type="text/javascript">
+					jQuery(document).ready(function($)
+					{
+						$("#example-1").dataTable({
+							aLengthMenu: [
+								[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]
+							]
+						});
+					});
+					</script>
+					
+					<table id="example-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th>资料名称</th>
+								<th>共享范围</th>
+								<th>上传人</th>
+								<th>上传日期</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><a href="#"><strong>Software_Requirements-Third Edition.pdf</strong></a></td>
+								<td>软件需求分析与设计</td>
+								<td>邢卫</td>
+								<td>2015/9/1</td>
+								<td>
+									<a href="#">下载</a>
+									<a href="#">在线查看</a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#"><strong>Software_Requirements-Third Edition.pdf</strong></a></td>
+								<td>软件需求分析与设计</td>
+								<td>邢卫</td>
+								<td>2015/9/1</td>
+								<td>
+									<a href="#">下载</a>
+									<a href="#">在线查看</a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#"><strong>Software_Requirements-Third Edition.pdf</strong></a></td>
+								<td>软件需求分析与设计</td>
+								<td>邢卫</td>
+								<td>2015/9/1</td>
+								<td>
+									<a href="#">下载</a>
+									<a href="#">在线查看</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>

@@ -1,0 +1,232 @@
+			<div class="page-title">
+				<div class="title-env">
+					<h1 class="title">消息</h1>
+					<p class="description">当前发出的消息列表</p>
+				</div>
+				
+				<div class="breadcrumb-env">
+					<ol class="breadcrumb bc-1">
+						<li>
+							<a href="index.html"><i class="fa-home"></i>主页</a>
+						</li>
+						<li>
+							<a href="#">消息</a>
+						</li>
+						<li>
+							<strong>已发送</strong>
+						</li>
+					</ol>
+				</div>
+			</div>
+			<section class="mailbox-env">
+				
+				<div class="row">
+					
+					<!-- Inbox emails -->
+					<div class="col-sm-9 mailbox-right">
+						
+						<div class="mail-env">
+						
+							<script type="text/javascript">
+								jQuery(document).ready(function($)
+								{
+									var $state = $(".mail-table thead input[type='checkbox'], .mail-table tfoot input[type='checkbox']"),
+										$chcks = $(".mail-table tbody input[type='checkbox']");
+									
+									// Script to select all checkboxes
+									$state.on('change', function(ev)
+									{
+										if($state.is(':checked'))
+										{
+											$chcks.prop('checked', true).trigger('change');
+										}
+										else
+										{
+											$chcks.prop('checked', false).trigger('change');
+										}
+									});
+									
+									// Row Highlighting
+									$chcks.each(function(i, el)
+									{
+										var $tr = $(el).closest('tr');
+										
+										$(this).on('change', function(ev)
+										{
+											$tr[$(this).is(':checked') ? 'addClass' : 'removeClass']('highlighted');
+										});
+									});
+									
+									// Stars
+									$(".mail-table .star").on('click', function(ev)
+									{
+										ev.preventDefault();
+										
+										if( ! $(this).hasClass('starred'))
+										{
+											$(this).addClass('starred').find('i').attr('class', 'fa-star');
+										}
+										else
+										{
+											$(this).removeClass('starred').find('i').attr('class', 'fa-star-empty');
+										}
+									});
+								});
+							</script>
+						
+							<!-- mail table -->
+							<table class="table mail-table">
+							
+								<!-- mail table header -->
+								<thead>
+									<tr>
+										<th class="col-cb">
+											<input type="checkbox" class="cbr" />
+										</th>
+										<th colspan="4" class="col-header-options">
+											
+											<div class="mail-select-options">Select all</div>
+											
+											<div class="mail-pagination">
+												Showing <strong>1 to 3</strong> of <strong>3</strong> emails
+												
+												<div class="next-prev">
+													<a href="#"><i class="fa-angle-left"></i></a>
+													<a href="#"><i class="fa-angle-right"></i></a>
+												</div>
+											</div>
+										</th>
+									</tr>
+								</thead>
+							
+								<!-- mail table footer -->
+								<tfoot>
+									<tr>
+										<th class="col-cb">
+											<input type="checkbox" class="cbr" />
+										</th>
+										<th colspan="4" class="col-header-options">
+											
+											<div class="mail-select-options">Select all</div>
+											
+											<div class="mail-pagination">
+												Showing <strong>1 to 3</strong> of <strong>3</strong> emails
+												
+												<div class="next-prev">
+													<a href="#"><i class="fa-angle-left"></i></a>
+													<a href="#"><i class="fa-angle-right"></i></a>
+												</div>
+											</div>
+										</th>
+									</tr>
+								</tfoot>
+								
+								<!-- email list -->
+								<tbody>
+									
+									<tr class="unread">
+										<td class="col-cb">
+											<div class="checkbox checkbox-replace">
+												<input type="checkbox" class="cbr" />
+											</div>
+										</td>
+										<td class="col-name">
+											<a href="#" class="star">
+												<i class="fa-star-empty"></i>
+											</a>
+											<a href="message-view.html" class="col-name">王尼玛</a>
+										</td>
+										<td class="col-subject">
+											<a href="message-view.html">
+												注意及时提交作业
+											</a>
+										</td>
+										<td class="col-options hidden-sm hidden-xs"></td>
+										<td class="col-time">时间日期</td>
+									</tr>
+									
+									<tr class="unread"><!-- new email class: unread -->
+										<td class="col-cb">
+											<div class="checkbox checkbox-replace">
+												<input type="checkbox" class="cbr" />
+											</div>
+										</td>
+										<td class="col-name">
+											<a href="#" class="star">
+												<i class="fa-star-empty"></i>
+											</a>
+											<a href="message-view.html" class="col-name">金波</a>
+										</td>
+										<td class="col-subject">
+											<a href="message-view.html">
+												答辩相关事宜
+											</a>
+										</td>
+										<td class="col-options hidden-sm hidden-xs">
+											<a href="message-view.html"><i class="linecons-attach"></i></a>
+										</td>
+										<td class="col-time">时间日期</td>
+									</tr>
+									
+									<tr>
+										<td class="col-cb">
+											<div class="checkbox checkbox-replace">
+												<input type="checkbox" class="cbr" />
+											</div>
+										</td>
+										<td class="col-name">
+											<a href="#" class="star">
+												<i class="fa-star-empty"></i>
+											</a>
+											<a href="message-view.html" class="col-name">王尼玛</a>
+										</td>
+										<td class="col-subject">
+											<a href="message-view.html">
+												注意不要上传不良文件
+											</a>
+										</td>
+										<td class="col-options hidden-sm hidden-xs"></td>
+										<td class="col-time">时间日期</td>
+									</tr>
+								</tbody>
+								
+							</table>
+							
+						</div>
+						
+					</div>
+					
+					<!-- Mailbox Sidebar -->
+					<div class="col-sm-3 mailbox-left">
+						
+						<div class="mailbox-sidebar">
+							
+							<a href="message-write.html" class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right">
+								<i class="linecons-mail"></i>
+								<span>写信</span>
+							</a>
+							
+							
+							<ul class="list-unstyled mailbox-list">
+								<li>
+									<a href="message-received-list.html">
+										收信箱
+										<span class="badge badge-success pull-right">2</span>
+									</a>
+								</li>
+								<li class="active">
+									<a href="#">
+										已发送
+									</a>
+								</li>
+							</ul>
+							
+							
+							
+						</div>
+						
+					</div>
+					
+				</div>
+				
+			</section>			
