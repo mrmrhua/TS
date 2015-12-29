@@ -1,3 +1,15 @@
+<?php
+	session_start();
+		if(isset($_POST['submit'])){
+			require(dirname(dirname(__FILE__))."/dbconfig.php");
+			$db = new mysqli($db_host,$db_username,$db_password,$db_database);
+			$sql = "INSERT INTO  `group` (  `group_name` ,  `class_id` ,  `leader_account` ,  `enter_passwd` )VALUES ('".$_POST['group_name']."',".$_GET['cid'].",'".$_SESSION['USERNAME']."','".$_POST['group_password']."');";
+			$db->query($sql);
+			header("Location:"."/student/group-info.php?cid=".$_GET['cid']);
+		}
+		else{
+
+?>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -38,109 +50,7 @@
 			&times;
 		</a>
 		
-		<div class="settings-pane-inner">
-			
-			<div class="row">
-				
-				<div class="col-md-4">
-					
-					<div class="user-info">
-						
-						<div class="user-image">
-							<a href="profile-main.html">
-								<img src="assets/images/user-2.png" class="img-responsive img-circle" />
-							</a>
-						</div>
-						
-						<div class="user-details">
-							
-							<h3>
-								<a href="profile-main.html">王尼玛</a>
-								
-								<!-- Available statuses: is-online, is-idle, is-busy and is-offline -->
-								<span class="user-status is-online"></span>
-							</h3>
-							
-							<p class="user-title">313010XXXX | 大三 | 软件工程</p>
-							
-							<div class="user-links">
-								<a href="profile-edit.php" class="btn btn-primary">编辑资料</a>
-								<a href="password-change.html" class="btn btn-success">修改密码</a>
-							</div>
-							
-						</div>
-						
-					</div>
-					
-				</div>
-				
-				<div class="col-md-8 link-blocks-env">
-					
-					<div class="links-block left-sep">
-						<h4>
-							<span>通知</span>
-						</h4>
-						
-						<ul class="list-unstyled">
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk1" />
-								<label for="sp-chk1">用户消息</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk2" />
-								<label for="sp-chk2">作业事件</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk3" />
-								<label for="sp-chk3">课程通知</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk4" />
-								<label for="sp-chk4">站内通知</label>
-							</li>
-						</ul>
-					</div>
-					
-					<div class="links-block left-sep">
-						<h4>
-							<a href="#">
-								<span>Help Desk</span>
-							</a>
-						</h4>
-						
-						<ul class="list-unstyled">
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Support Center
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Submit a Ticket
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Domains Protocol
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Terms of Service
-								</a>
-							</li>
-						</ul>
-					</div>
-					
-				</div>
-				
-			</div>
-		
-		</div>
+		<?php require("setting-pane.php");?>
 		
 	</div>
 <!-- 	<div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
@@ -232,13 +142,13 @@
 									<span class="title">软件需求分析与设计</span>
 								</a>
 								<ul>
-									<li class="active">
-										<a href="group-info.html">
-											<span class="title">小组详细</span>
+									<li>
+										<a href="group-info.php">
+											<span class="title">小组信息</span>
 										</a>
 									</li>
-									<li>
-										<a href="group-setup.html">
+									<li class="active">
+										<a href="group-setup.php">
 											<span class="title">建立小组</span>
 										</a>
 									</li>
@@ -255,12 +165,12 @@
 								</a>
 								<ul>
 									<li class="active">
-										<a href="group-info.html">
+										<a href="group-info.php">
 											<span class="title">小组详细</span>
 										</a>
 									</li>
 									<li>
-										<a href="group-setup.html">
+										<a href="group-setup.php">
 											<span class="title">建立小组</span>
 										</a>
 									</li>
@@ -277,12 +187,12 @@
 								</a>
 								<ul>
 									<li class="active">
-										<a href="group-info.html">
+										<a href="group-info.php">
 											<span class="title">小组详细</span>
 										</a>
 									</li>
 									<li>
-										<a href="group-setup.html">
+										<a href="group-setup.php">
 											<span class="title">建立小组</span>
 										</a>
 									</li>
@@ -714,14 +624,14 @@
 			<div class="page-title">
 				
 				<div class="title-env">
-					<h1 class="title">软件需求分析与设计 - G10</h1>
-					<p class="description">王尼玛和他的小伙伴们</p>
+					<h1 class="title">建立小组</h1>
+					<p class="description">当前学生在当前课程班级建立小组，默认当前学生为组长</p>
 				</div>
 				
 				<div class="breadcrumb-env">
 					<ol class="breadcrumb bc-1">
 						<li>
-							<a href="#">主页</a>
+							<a href="index.php"><i class="fa-home"></i>主页</a>
 						</li>
 						<li>
 							小组
@@ -730,402 +640,62 @@
 							软件需求分析与设计
 						</li>
 						<li>
-							<strong>小组详细</strong>
+							建立小组
 						</li>
 					</ol>
 				</div>
 			</div>
 
-			<section class="profile-env">
-				
-				<div class="row">
-					<!-- 小组成员信息 -->
-					<div class="col-sm-3">
-				
-						<div class="panel-group" id="accordion-test-2">
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseOne-2">
-											王尼玛
-										</a>
-									</h4>
-								</div>
-								<div id="collapseOne-2" class="panel-collapse collapse in">
-									<div class="panel-body">
-										<div class="user-info-sidebar">
-											<a href="#" class="user-img">
-												<img src="assets/images/user-4.png" alt="user-img" class="img-cirlce img-responsive img-thumbnail" />
-											</a>
-											<a href="#" class="user-name">
-												王尼玛
-												<span class="user-status is-online"></span>
-											</a>
-											<span class="user-title">
-												<strong>313010XXXX</strong>
-											</span>
-											
-											<hr />
-											
-											<ul class="list-unstyled user-info-list">
-												<li>
-													<i class="fa-home"></i>
-													大三 - 软件工程
-												</li>
-												<li>
-													<i class="linecons-mobile"></i>
-													188XXXX1234
-												</li>
-												<li>
-													<i class="linecons-mail"></i>
-													XXXXX@zju.edu.cn
-												</li>
-												<li>
-													<i class="fa-graduation-cap"></i>
-													浙江大学
-												</li>
-											</ul>	
-												
-											<a href="message-write.html">
-												<button type="button" class="btn btn-success btn-block text-left">
-													写信
-													<i class="linecons-mail pull-right"></i>
-												</button>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseTwo-2" class="collapsed">
-											张尼玛
-										</a>
-									</h4>
-								</div>
-								<div id="collapseTwo-2" class="panel-collapse collapse">
-									<div class="panel-body">
-										<div class="user-info-sidebar">
-											<a href="#" class="user-img">
-												<img src="assets/images/user-4.png" alt="user-img" class="img-cirlce img-responsive img-thumbnail" />
-											</a>
-											<a href="#" class="user-name">
-												张尼玛
-												<span class="user-status is-online"></span>
-											</a>
-											<span class="user-title">
-												<strong>313010XXXX</strong>
-											</span>
-											
-											<hr />
-											
-											<ul class="list-unstyled user-info-list">
-												<li>
-													<i class="fa-home"></i>
-													大三 - 软件工程
-												</li>
-												<li>
-													<i class="linecons-mobile"></i>
-													188XXXX1234
-												</li>
-												<li>
-													<i class="linecons-mail"></i>
-													XXXXX@zju.edu.cn
-												</li>
-												<li>
-													<i class="fa-graduation-cap"></i>
-													浙江大学
-												</li>
-											</ul>	
-												
-											<a href="message-write.html">
-												<button type="button" class="btn btn-success btn-block text-left">
-													写信
-													<i class="linecons-mail pull-right"></i>
-												</button>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseThree-2" class="collapsed">
-											董尼玛
-										</a>
-									</h4>
-								</div>
-								<div id="collapseThree-2" class="panel-collapse collapse">
-									<div class="panel-body">
-										<div class="user-info-sidebar">
-											<a href="#" class="user-img">
-												<img src="assets/images/user-4.png" alt="user-img" class="img-cirlce img-responsive img-thumbnail" />
-											</a>
-											<a href="#" class="user-name">
-												董尼玛
-												<span class="user-status is-online"></span>
-											</a>
-											<span class="user-title">
-												<strong>313010XXXX</strong>
-											</span>
-											
-											<hr />
-											
-											<ul class="list-unstyled user-info-list">
-												<li>
-													<i class="fa-home"></i>
-													大三 - 软件工程
-												</li>
-												<li>
-													<i class="linecons-mobile"></i>
-													188XXXX1234
-												</li>
-												<li>
-													<i class="linecons-mail"></i>
-													XXXXX@zju.edu.cn
-												</li>
-												<li>
-													<i class="fa-graduation-cap"></i>
-													浙江大学
-												</li>
-											</ul>	
-												
-											<a href="message-write.html">
-												<button type="button" class="btn btn-success btn-block text-left">
-													写信
-													<i class="linecons-mail pull-right"></i>
-												</button>
-											</a>
-										</div>
-									</div>
-								</div>
+			<div class="row">
+				<div class="col-sm-12">
+					
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">编辑小组信息</h3>
+							<div class="panel-options">
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
 							</div>
 						</div>
-					</div>
-					<!-- 小组讨论内容 -->
-					<div class="col-sm-9">
-						
-						<!-- User Post form and Timeline -->
-						<form method="post" action="" class="profile-post-form">
-							<textarea class="form-control input-unstyled input-lg autogrow" placeholder="What's on your mind?"></textarea>
-							<i class="el-edit block-icon"></i>
+						<div class="panel-body">
 							
-							<ul class="list-unstyled list-inline form-action-buttons">
-								<li>
-									<button type="button" class="btn btn-unstyled">
-										<i class="el-camera"></i>
-									</button>
-								</li>
-								<li>
-									<button type="button" class="btn btn-unstyled">
-										<i class="el-attach"></i>
-									</button>
-								</li>
-								<li>
-									<button type="button" class="btn btn-unstyled">
-										<i class="el-mic"></i>
-									</button>
-								</li>
-								<li>
-									<button type="button" class="btn btn-unstyled">
-										<i class="el-music"></i>
-									</button>
-								</li>
-							</ul>
-							
-							<button type="submit" class="btn btn-single btn-xs btn-success post-story-button">发表</button>
-						</form>
-						
-						
-						<!-- User timeline stories -->
-						<section class="user-timeline-stories">
-							
-							<!-- Timeline Story Type: Status -->
-							<article class="timeline-story">
+							<form role="form" class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF']."?cid=".$_GET['cid']; ?>" method="post">
 								
-								<i class="fa-paper-plane-empty block-icon"></i>
-								
-								<!-- User info -->
-								<header>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="field-1">小组名字</label>
 									
-									<a href="#" class="user-img">
-										<img src="assets/images/user-4.png" alt="user-img" class="img-responsive img-circle" />
-									</a>
-									
-									<div class="user-details">
-										<a href="#">王尼玛</a>
-										<time>12 hours ago</time>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" id="field-1" name="group_name" placeholder="Placeholder">
 									</div>
-									
-								</header>
-								
-								<div class="story-content">
-									<!-- Story Content Wrapped inside Paragraph -->
-									<p>最近作业好多啊！</p>
-									
-									<!-- Story Options Links -->
-									<div class="story-options-links">
-										<a href="#">
-											<i class="linecons-heart"></i>
-											赞 
-											<span>(3)</span>
-										</a>
-										
-										<a href="#">
-											<i class="linecons-comment"></i>
-											评论
-											<span>(2)</span>
-										</a>
-									</div>
-									
-									
-									<!-- Story Comments -->
-									<ul class="list-unstyled story-comments">
-										<li>
-											
-											<div class="story-comment">
-												<a href="#" class="comment-user-img">
-													<img src="assets/images/user-2.png" alt="user-img" class="img-circle img-responsive" />
-												</a>
-												
-												<div class="story-comment-content">
-													<a href="#" class="story-comment-user-name">
-														张尼玛
-														<time>28 September 2015 - 00:36</time>
-													</a>
-													
-													<p>老司机，来点福利放松一下呗</p>
-												</div>
-											</div>
-											
-										</li>
-										<li>
-											
-											<div class="story-comment">
-												<a href="#" class="comment-user-img">
-													<img src="assets/images/user-3.png" alt="user-img" class="img-circle img-responsive" />
-												</a>
-												
-												<div class="story-comment-content">
-													<a href="#" class="story-comment-user-name">
-														董尼玛
-														<time>01 September 2015 - 00:36</time>
-													</a>
-													
-													<p>好好学习，天天向上啊！！</p>
-												</div>
-											</div>
-											
-										</li>
-										<li>
-											
-											<div class="story-comment">
-												<a href="#" class="comment-user-img">
-													<img src="assets/images/user-3.png" alt="user-img" class="img-circle img-responsive" />
-												</a>
-												
-												<div class="story-comment-content">
-													<a href="#" class="story-comment-user-name">
-														邢卫
-														<time>01 September 2015 - 00:36</time>
-													</a>
-													
-													<p>董尼玛同学，思想觉悟很高啊，要加分表扬</p>
-												</div>
-											</div>
-											
-										</li>
-									</ul>
-									
-									<form method="post" action="" class="story-comment-form">
-										<textarea class="form-control input-unstyled autogrow" placeholder="Reply..."></textarea>
-									</form>
 								</div>
-								
-							</article>
 
-							<!-- Timeline Story Type: Status -->
-							<article class="timeline-story">
-								
-								<i class="fa-paper-plane-empty block-icon"></i>
-								
-								<!-- User info -->
-								<header>
+								<div class="form-group-separator"></div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="field-8">小组口令</label>
 									
-									<a href="#" class="user-img">
-										<img src="assets/images/user-4.png" alt="user-img" class="img-responsive img-circle" />
-									</a>
-									
-									<div class="user-details">
-										<a href="#">王尼玛</a>
-										<time>12 hours ago</time>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" id="field-8" name="group_password" placeholder="Placeholder">
 									</div>
-									
-								</header>
-								
-								<div class="story-content">
-									<!-- Story Content Wrapped inside Paragraph -->
-									<p>老司机福利已上传，嘻嘻</p>
-									
-									<!-- Story Options Links -->
-									<div class="story-options-links">
-										<a href="#">
-											<i class="linecons-heart"></i>
-											赞 
-											<span>(3)</span>
-										</a>
-										
-										<a href="#">
-											<i class="linecons-comment"></i>
-											评论
-											<span>(5)</span>
-										</a>
-									</div>
-									
-									
-									<!-- Story Comments -->
-									<ul class="list-unstyled story-comments">
-										<li>
-											
-											<div class="story-comment">
-												<a href="#" class="comment-user-img">
-													<img src="assets/images/user-2.png" alt="user-img" class="img-circle img-responsive" />
-												</a>
-												
-												<div class="story-comment-content">
-													<a href="#" class="story-comment-user-name">
-														邢卫
-														<time>28 September 2015 - 00:36</time>
-													</a>
-													
-													<p>王尼玛，不好好学习，又上传什么奇奇怪怪的东西！</p>
-												</div>
-											</div>
-											
-										</li>
-									</ul>
-									
-									<form method="post" action="" class="story-comment-form">
-										<textarea class="form-control input-unstyled autogrow" placeholder="Reply..."></textarea>
-									</form>
 								</div>
-								
-							</article>
 
-						</section>
+								<div class="form-group-separator"></div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="field-9"></label>
+									
+									<div class="col-sm-5">
+										<input type="submit" class="btn btn-secondary btn-single" name="submit" value="新建小组"></input>
+									</div>
+								</div>
+
+							</form>
+						</div>
 					</div>
-					
 				</div>
-				
-			</section>
-
-
-
+			</div>
 			
 
 			
@@ -1321,3 +891,8 @@
 
 </body>
 </html>
+
+<?php
+		}
+
+			?>

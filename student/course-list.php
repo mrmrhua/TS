@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require("course.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="zh">
@@ -443,6 +443,8 @@
 						</thead>
 						<tbody>
 						<?php
+							$db->close();
+							require("course.php");
 							while($course_row = $course_result->fetch_assoc()){
 								echo "<tr>";
 								echo "<td><a href='course-info.php?cid=".$course_row['cid']."'><strong>".$course_row['course_name']."</strong></a></td>";

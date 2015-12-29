@@ -5,6 +5,7 @@
  * Date: 2015/12/29
  * Time: 16:23
  */
+require("course.php");
 ?>
 <div class="sidebar-menu toggle-others fixed">
 
@@ -67,72 +68,36 @@
                     <span class="title">小组</span>
                 </a>
                 <ul>
-                    <li>
-                        <a href="#">
-                            <span class="title">软件需求分析与设计</span>
-                        </a>
-                        <ul>
-                            <li class="active">
-                                <a href="group-info.html">
-                                    <span class="title">小组详细</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="group-setup.html">
-                                    <span class="title">建立小组</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="group-join.html">
-                                    <span class="title">加入小组</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="title">项目管理与案例分析</span>
-                        </a>
-                        <ul>
-                            <li class="active">
-                                <a href="group-info.html">
-                                    <span class="title">小组详细</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="group-setup.html">
-                                    <span class="title">建立小组</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="group-join.html">
-                                    <span class="title">加入小组</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="title">软件质量保证与测试</span>
-                        </a>
-                        <ul>
-                            <li class="active">
-                                <a href="group-info.html">
-                                    <span class="title">小组详细</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="group-setup.html">
-                                    <span class="title">建立小组</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="group-join.html">
-                                    <span class="title">加入小组</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    <?php
+                        while($course_row = $course_result->fetch_assoc()) {
+
+                            echo "<li>";
+                            echo "<a href='#'>";
+                            echo "<span class='title'>" . $course_row['course_name'] . "</span>";
+                            echo "</a>";
+                            echo "<ul>";
+                            echo "<li class='active'>" .
+                                "<a href='group-info.php?cid=" . $course_row['cid'] . "'>" .
+                                "<span class='title'>小组详细</span>" .
+                                "</a>" .
+                                "</li>" .
+                                "<li>" .
+                                "<a href='group-setup.php?cid=" . $course_row['cid'] . "'>" .
+                                "<span class='title'>建立小组</span>" .
+                                "</a>" .
+                                "</li>" .
+                                "<li>" .
+                                "<a href='group-join.php?cid=" . $course_row['cid'] . "'>" .
+                                "<span class='title'>加入小组</span>" .
+                                "</a>" .
+                                "</li>" .
+                                "</ul>" .
+                                "</li>" ;
+
+                        }
+
+                        ?>
+
                 </ul>
             </li>
 

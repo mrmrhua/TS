@@ -141,12 +141,12 @@
 									</a>
 									<ul>
 										<li class="active">
-											<a href="group-info.html">
+											<a href="group-info.php">
 												<span class="title">小组详细</span>
 											</a>
 										</li>
 										<li>
-											<a href="group-setup.html">
+											<a href="group-setup.php">
 												<span class="title">建立小组</span>
 											</a>
 										</li>
@@ -163,12 +163,12 @@
 									</a>
 									<ul>
 										<li class="active">
-											<a href="group-info.html">
+											<a href="group-info.php">
 												<span class="title">小组详细</span>
 											</a>
 										</li>
 										<li>
-											<a href="group-setup.html">
+											<a href="group-setup.php">
 												<span class="title">建立小组</span>
 											</a>
 										</li>
@@ -185,12 +185,12 @@
 									</a>
 									<ul>
 										<li class="active">
-											<a href="group-info.html">
+											<a href="group-info.php">
 												<span class="title">小组详细</span>
 											</a>
 										</li>
 										<li>
-											<a href="group-setup.html">
+											<a href="group-setup.php">
 												<span class="title">建立小组</span>
 											</a>
 										</li>
