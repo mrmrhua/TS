@@ -1,3 +1,7 @@
+<?php
+	session_start();
+	require("course.php");
+?>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -32,117 +36,8 @@
 </head>
 <body class="page-body">
 
-	<div class="settings-pane">
-			
-		<a href="#" data-toggle="settings-pane" data-animate="true">
-			&times;
-		</a>
-		
-		<div class="settings-pane-inner">
-			
-			<div class="row">
-				
-				<div class="col-md-4">
-					
-					<div class="user-info">
-						
-						<div class="user-image">
-							<a href="profile-main.html">
-								<img src="assets/images/user-2.png" class="img-responsive img-circle" />
-							</a>
-						</div>
-						
-						<div class="user-details">
-							
-							<h3>
-								<a href="profile-main.html">王尼玛</a>
-								
-								<!-- Available statuses: is-online, is-idle, is-busy and is-offline -->
-								<span class="user-status is-online"></span>
-							</h3>
-							
-							<p class="user-title">313010XXXX | 大三 | 软件工程</p>
-							
-							<div class="user-links">
-								<a href="profile-edit.php" class="btn btn-primary">编辑资料</a>
-								<a href="password-change.html" class="btn btn-success">修改密码</a>
-							</div>
-							
-						</div>
-						
-					</div>
-					
-				</div>
-				
-				<div class="col-md-8 link-blocks-env">
-					
-					<div class="links-block left-sep">
-						<h4>
-							<span>通知</span>
-						</h4>
-						
-						<ul class="list-unstyled">
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk1" />
-								<label for="sp-chk1">用户消息</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk2" />
-								<label for="sp-chk2">作业事件</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk3" />
-								<label for="sp-chk3">课程通知</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk4" />
-								<label for="sp-chk4">站内通知</label>
-							</li>
-						</ul>
-					</div>
-					
-					<div class="links-block left-sep">
-						<h4>
-							<a href="#">
-								<span>Help Desk</span>
-							</a>
-						</h4>
-						
-						<ul class="list-unstyled">
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Support Center
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Submit a Ticket
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Domains Protocol
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Terms of Service
-								</a>
-							</li>
-						</ul>
-					</div>
-					
-				</div>
-				
-			</div>
-		
-		</div>
-		
-	</div>
+
+	<?php require("setting-pane.php"); ?>
 <!-- 	<div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
  -->	
 	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
@@ -197,27 +92,11 @@
 
 					<!-- 课程 -->
 					<li class="opened active">
-						<a href="#">
+						<a href="course-list.php">
 							<i class="linecons-cog"></i>
-							<span class="title">课程</span>
+								<span class="title">课程</span>
 						</a>
-						<ul>
-							<li class="active">
-								<a href="course-list.html">
-									<span class="title">课程列表</span>
-								</a>
-							</li>
-							<li>
-								<a href="course-info.php">
-									<span class="title">课程介绍</span>
-								</a>
-							</li>
-							<li>
-								<a href="course-teacher-info.html">
-									<span class="title">教师介绍</span>
-								</a>
-							</li>
-						</ul>
+
 					</li>
 
 					<!-- 小组 -->
@@ -723,7 +602,7 @@
 							<a href="index.php"><i class="fa-home"></i>主页</a>
 						</li>
 						<li>
-							<a href="course-list.html">课程</a>
+							<a href="course-list.php">课程</a>
 						</li>
 						<li>
 							<strong>课程列表</strong>
@@ -767,33 +646,20 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td><a href="course-info.php"><strong>软件需求分析与设计</strong></a></td>
-								<td><a href="course-teacher-info.html"><strong>邢卫</strong></a>、刘玉生</td>
-								<td>秋冬</td>
-								<td>周五3、4、5</td>
-								<td>
-									<a href="course-info.php">详细</a>
-								</td>
-							</tr>
-							<tr>
-								<td><a href="course-info.php"><strong>软件需求分析与设计</strong></a></td>
-								<td><a href="course-teacher-info.html"><strong>邢卫</strong></a>、刘玉生</td>
-								<td>秋冬</td>
-								<td>周五3、4、5</td>
-								<td>
-									<a href="course-info.php">详细</a>
-								</td>
-							</tr>
-							<tr>
-								<td><a href="course-info.php"><strong>软件需求分析与设计</strong></a></td>
-								<td><a href="course-teacher-info.html"><strong>邢卫</strong></a>、刘玉生</td>
-								<td>秋冬</td>
-								<td>周五3、4、5</td>
-								<td>
-									<a href="course-info.php">详细</a>
-								</td>
-							</tr>
+						<?php
+							while($course_row = $course_result->fetch_assoc()){
+								echo "<tr>";
+								echo "<td><a href='course-info.php?cid=".$course_row['cid']."'><strong>".$course_row['course_name']."</strong></a></td>";
+								echo "<td><a href='course-teacher-info.html'><strong>".$course_row['teacher_name']."</strong></a></td>";
+								echo "<td>".$course_row['semeter']."</td>";
+								echo "<td>".$course_row['week'].$course_row['begin_num']."-".$course_row['end_num']."</td>";
+
+								echo "<td>
+										<a href='course-info.php?cid=".$course_row['cid']."'>详细</a>
+									</td>
+								</tr>";
+							}
+						?>
 						</tbody>
 					</table>
 				</div>

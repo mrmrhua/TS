@@ -1,20 +1,20 @@
 <?php
 	session_start();
 	if(isset($_SESSION['IDENTITY']) && $_SESSION['IDENTITY']==0){  //已经登录
-	require("student_info.php");
-	if(isset($_POST['submit'])){
-		$grade = $_POST['input_grade'];
-		$major = $_POST['input_major'];
-		$tel = $_POST['input_tel'];
-		$email = $_POST['input_email'];
-		//写入数据库
-		require(dirname(dirname(__FILE__))."/dbconfig.php");
-		$db = new mysqli($db_host,$db_username,$db_password,$db_database);
-		$sql = "update student set grade='".$grade."' , major='".$major."',tel='".$tel."',email='".$email."' where account='".$stu_id."';";
-		$db->query($sql);
-		echo "insert ok";
-	}
-	else {
+		require("student_info.php");
+		if(isset($_POST['submit'])){
+			$grade = $_POST['input_grade'];
+			$major = $_POST['input_major'];
+			$tel = $_POST['input_tel'];
+			$email = $_POST['input_email'];
+			//写入数据库
+			require(dirname(dirname(__FILE__))."/dbconfig.php");
+			$db = new mysqli($db_host,$db_username,$db_password,$db_database);
+			$sql = "update student set grade='".$grade."' , major='".$major."',tel='".$tel."',email='".$email."' where account='".$stu_id."';";
+			$db->query($sql);
+			header("Location:"."/student/index.php");
+		}
+		else {
 		?>
 		<!DOCTYPE html>
 		<html lang="zh">
@@ -111,7 +111,7 @@
 							</a>
 							<ul>
 								<li>
-									<a href="course-list.html">
+									<a href="course-list.php">
 										<span class="title">课程列表</span>
 									</a>
 								</li>
@@ -685,7 +685,7 @@
 
 										<div class="col-sm-5">
 											<input type="text" class="form-control" id="field-3"
-												   name="input_grade' placeholder="年级">
+												   name="input_grade" placeholder="年级">
 										</div>
 									</div>
 
@@ -696,7 +696,7 @@
 
 										<div class="col-sm-5">
 											<input type="text" class="form-control" id="field-4"
-												   name="input_major placeholder=" Placeholder">
+												   name="input_major" placeholder=" Placeholder">
 										</div>
 									</div>
 
@@ -707,7 +707,7 @@
 
 										<div class="col-sm-5">
 											<input type="text" class="form-control" id="field-4"
-												   name="input_tel placeholder=" Placeholder">
+												   name="input_tel" placeholder=" Placeholder">
 										</div>
 									</div>
 
@@ -718,7 +718,7 @@
 
 										<div class="col-sm-5">
 											<input type="text" class="form-control" id="field-5"
-												   name="input_email placeholder=" Placeholder">
+												   name="input_email" placeholder=" Placeholder">
 										</div>
 									</div>
 
@@ -729,7 +729,7 @@
 
 										<div class="col-sm-5">
 											<!--<a href="#">-->
-												<input type="submit" class="btn btn-secondary btn-single" name="submit"></input>
+												<input type="submit" class="btn btn-secondary btn-single" name="submit">
 											<!--</a>-->
 										</div>
 									</div>

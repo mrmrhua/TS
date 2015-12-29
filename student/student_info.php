@@ -9,10 +9,13 @@
     $db = new mysqli($db_host,$db_username,$db_password,$db_database);
     $sql = "select name,major,grade,account from student where account='". $_SESSION['USERNAME']."';";
     $result =$db->query($sql);
-    $result = $result->fetch_assoc();
-    $name = $result['name'];
-    $major = $result['major'];
-    $stu_id = $result['account'];
-    $grade = $result['grade'];
-    $_SESSION['name'] =  $name;  //姓名在其他页面用到比较多，放到session里
+    $row = $result->fetch_assoc();
+
+    $name = $row['name'];
+    $major = $row['major'];
+    $stu_id = $row['account'];
+    $grade = $row['grade'];
+    $_SESSION['name'] =  "ding";  //姓名在其他页面用到比较多，放到session里\
+   // $_SESSION['usericon'] =
+
 ?>

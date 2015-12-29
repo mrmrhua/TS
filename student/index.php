@@ -9,7 +9,7 @@
     if(isset($_SESSION['IDENTITY']) && $_SESSION['IDENTITY']==0){  //已经登录
         //提取个人信息
 
-        require("student_info.php");
+       // require("student_info.php");
 ?>
 <!DOCTYPE html>
 <html lang="zh">
@@ -100,28 +100,12 @@
                 <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
 
                 <!-- 课程 -->
-                <li>
-                    <a href="#">
+                <li class="opened active">
+                    <a href="course-list.php">
                         <i class="linecons-cog"></i>
                         <span class="title">课程</span>
                     </a>
-                    <ul>
-                        <li>
-                            <a href="course-list.html">
-                                <span class="title">课程列表</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="course-info.php">
-                                <span class="title">课程介绍</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="course-teacher-info.html">
-                                <span class="title">教师介绍</span>
-                            </a>
-                        </li>
-                    </ul>
+
                 </li>
 
                 <!-- 小组 -->
@@ -556,7 +540,7 @@
                 <!-- 用户头像 -->
                 <li class="dropdown user-profile">
                     <a href="#" data-toggle="dropdown">
-                        <img src="assets/images/user-4.png" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
+                        <img src=<?php echo "assets/usericon/".$stu_id.".jpg" ?> alt="user-image" class="img-circle img-inline userpic-32" width="28" />
 							<span>
 								<?php
                                 echo $name; ?>

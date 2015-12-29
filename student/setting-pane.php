@@ -26,7 +26,7 @@ require("student_info.php");
 
                     <div class="user-image">
                         <a href="profile-main.html">
-                            <img src="assets/images/user-2.png" class="img-responsive img-circle"/>
+                            <img src=<?php echo "assets/usericon/".$stu_id.".jpg" ?> class="img-responsive img-circle"/>
                         </a>
                     </div>
 

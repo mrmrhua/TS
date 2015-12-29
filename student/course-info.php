@@ -1,5 +1,10 @@
 <?php
 	session_start();
+	require(dirname(dirname(__FILE__))."/dbconfig.php");
+	$db = new mysqli($db_host,$db_username,$db_password,$db_database);
+	$sql = "select * from course where cid =".$_GET['cid'].";";
+	$thiscourse =$db->query($sql);
+	$thiscourse_row = $thiscourse->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="zh">
@@ -90,29 +95,12 @@
 
 					<!-- 课程 -->
 					<li class="opened active">
-						<a href="#">
+						<a href="course-list.php">
 							<i class="linecons-cog"></i>
 							<span class="title">课程</span>
 						</a>
-						<ul>
-							<li>
-								<a href="course-list.html">
-									<span class="title">课程列表</span>
-								</a>
-							</li>
-							<li class="active">
-								<a href="course-info.php">
-									<span class="title">课程介绍</span>
-								</a>
-							</li>
-							<li>
-								<a href="course-teacher-info.html">
-									<span class="title">教师介绍</span>
-								</a>
-							</li>
-						</ul>
-					</li>
 
+					</li>
 					<!-- 小组 -->
 					<li>
 						<a href="#">
@@ -541,17 +529,18 @@
 						</form>
 						
 					</li>
-					
+
 					<!-- 用户头像 -->
 					<li class="dropdown user-profile">
 						<a href="#" data-toggle="dropdown">
-							<img src="assets/images/user-4.png" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
+							<img src=<?php echo "assets/usericon/".$stu_id.".jpg" ?> alt="user-image" class="img-circle img-inline userpic-32" width="28" />
 							<span>
-								王尼玛
+								<?php
+								echo $name; ?>
 								<i class="fa-angle-down"></i>
 							</span>
 						</a>
-						
+
 						<ul class="dropdown-menu user-profile-menu list-unstyled">
 							<li>
 								<a href="message-write.html">
@@ -617,7 +606,7 @@
 							<a href="index.php"><i class="fa-home"></i>主页</a>
 						</li>
 						<li>
-							<a href="course-list.html">课程</a>
+							<a href="course-list.php">课程</a>
 						</li>
 						<li>
 							<strong>课程详细</strong>
@@ -645,7 +634,7 @@
 								<label class="col-sm-2 control-label" for="field-2">课程名称</label>
 								
 								<div class="col-sm-5">
-									软件需求分析与设计
+									<?php echo $thiscourse_row['course_name']; ?>
 								</div>
 							</div>
 							
@@ -655,7 +644,7 @@
 								<label class="col-sm-2 control-label" for="field-2">学分</label>
 								
 								<div class="col-sm-5">
-									2.5
+									<?php echo $thiscourse_row['course_credit']; ?>
 								</div>
 							</div>
 							
@@ -665,7 +654,7 @@
 								<label class="col-sm-2 control-label" for="field-3">开课院系</label>
 								
 								<div class="col-sm-5">
-									计算机学院
+									<?php echo $thiscourse_row['course_department']; ?>
 								</div>
 							</div>
 
@@ -675,7 +664,7 @@
 								<label class="col-sm-2 control-label" for="field-4">授课教师</label>
 								
 								<div class="col-sm-5">
-									邢卫 刘玉生
+									<?php echo $thiscourse_row['teacher_name']; ?>
 								</div>
 							</div>
 
@@ -685,7 +674,7 @@
 								<label class="col-sm-2 control-label" for="field-5">课程简介</label>
 								
 								<div class="col-sm-5">
-									<p>balabalabala</p>
+									<p><?php echo $thiscourse_row['intro']; ?></p>
 								</div>
 							</div>
 
@@ -695,10 +684,8 @@
 								<label class="col-sm-2 control-label" for="field-6">课程大纲</label>
 								
 								<div class="col-sm-5">
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
+									<p><?php echo $thiscourse_row['outline']; ?></p>
+
 									
 								</div>
 							</div>
@@ -709,11 +696,7 @@
 								<label class="col-sm-2 control-label" for="field-7">考核方式</label>
 								
 								<div class="col-sm-5">
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
+									<p><?php echo $thiscourse_row['exam_describe']; ?></p>
 								</div>
 							</div>
 
