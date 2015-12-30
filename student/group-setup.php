@@ -3,7 +3,10 @@
 		if(isset($_POST['submit'])){
 			require(dirname(dirname(__FILE__))."/dbconfig.php");
 			$db = new mysqli($db_host,$db_username,$db_password,$db_database);
-			$sql = "INSERT INTO  `group` (  `group_name` ,  `class_id` ,  `leader_account` ,  `enter_passwd` )VALUES ('".$_POST['group_name']."',".$_GET['cid'].",'".$_SESSION['USERNAME']."','".$_POST['group_password']."');";
+			$sql="select class_id from (class NATURAL  JOIN  class_student) where student_account='". $_SESSION['USERNAME']."' and cid=".$_GET['cid'].";";
+			$result = $db->query($sql);
+			$row = $result->fetch_assoc();
+			$sql = "INSERT INTO  `group` (  `group_name` ,  `class_id` ,  `leader_account` ,  `enter_passwd`, `cid`  )VALUES ('".$_POST['group_name']."',".$row['class_id'].",'".$_SESSION['USERNAME']."','".$_POST['group_password']."',".$_GET['cid'].");";
 			$db->query($sql);
 			header("Location:"."/student/group-info.php?cid=".$_GET['cid']);
 		}
@@ -153,7 +156,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="group-join.html">
+										<a href="group-join.php">
 											<span class="title">加入小组</span>
 										</a>
 									</li>
@@ -175,7 +178,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="group-join.html">
+										<a href="group-join.php">
 											<span class="title">加入小组</span>
 										</a>
 									</li>
@@ -197,7 +200,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="group-join.html">
+										<a href="group-join.php">
 											<span class="title">加入小组</span>
 										</a>
 									</li>
@@ -625,25 +628,10 @@
 				
 				<div class="title-env">
 					<h1 class="title">建立小组</h1>
-					<p class="description">当前学生在当前课程班级建立小组，默认当前学生为组长</p>
+					<p class="description">在当前课程班级建立小组，默认您为组长</p>
 				</div>
 				
-				<div class="breadcrumb-env">
-					<ol class="breadcrumb bc-1">
-						<li>
-							<a href="index.php"><i class="fa-home"></i>主页</a>
-						</li>
-						<li>
-							小组
-						</li>
-						<li>
-							软件需求分析与设计
-						</li>
-						<li>
-							建立小组
-						</li>
-					</ol>
-				</div>
+
 			</div>
 
 			<div class="row">
@@ -667,7 +655,7 @@
 									<label class="col-sm-2 control-label" for="field-1">小组名字</label>
 									
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="field-1" name="group_name" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-1" name="group_name" placeholder="请输入你们小组的大名">
 									</div>
 								</div>
 
@@ -677,7 +665,7 @@
 									<label class="col-sm-2 control-label" for="field-8">小组口令</label>
 									
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="field-8" name="group_password" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-8" name="group_password" placeholder="请输入6位数字">
 									</div>
 								</div>
 

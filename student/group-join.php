@@ -1,3 +1,8 @@
+<?php
+	if(isset($_GET['cid']) && isset($_POST['submit'])){
+
+	}
+?>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -7,7 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="description" content="Xenon Boostrap Admin Panel" />
 	<meta name="author" content="" />
-	
+	r
 	<title>浙江大学软件工程课程网站</title>
 
 	<link rel="stylesheet" href="assets/css/ffonts.css">
@@ -243,7 +248,7 @@
 										</a>
 									</li>
 									<li class="active">
-										<a href="group-join.html">
+										<a href="group-join.php">
 											<span class="title">加入小组</span>
 										</a>
 									</li>
@@ -265,7 +270,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="group-join.html">
+										<a href="group-join.php">
 											<span class="title">加入小组</span>
 										</a>
 									</li>
@@ -287,7 +292,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="group-join.html">
+										<a href="group-join.php">
 											<span class="title">加入小组</span>
 										</a>
 									</li>
@@ -717,23 +722,7 @@
 					<h1 class="title">加入小组</h1>
 					<p class="description">当前学生在当前课程班级加入已有的小组</p>
 				</div>
-				
-				<div class="breadcrumb-env">
-					<ol class="breadcrumb bc-1">
-						<li>
-							<a href="index.php"><i class="fa-home"></i>主页</a>
-						</li>
-						<li>
-							小组
-						</li>
-						<li>
-							软件需求分析与设计
-						</li>
-						<li>
-							加入小组
-						</li>
-					</ol>
-				</div>
+
 			</div>
 
 			<div class="row">
@@ -751,7 +740,7 @@
 						</div>
 						<div class="panel-body">
 							
-							<form role="form" class="form-horizontal">
+							<form role="form" class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']; ?>" method="post">
 								
 								<div class="form-group">
 									<label class="col-sm-2 control-label" for="field-1">小组名字</label>
@@ -760,16 +749,7 @@
 										<input type="text" class="form-control" id="field-1" placeholder="Placeholder">
 									</div>
 								</div>
-								
-								<div class="form-group-separator"></div>
 
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-2">小组号码</label>
-									
-									<div class="col-sm-2">
-										<input type="text" class="form-control" id="field-2" placeholder="Placeholder">
-									</div>
-								</div>
 
 								<div class="form-group-separator"></div>
 
@@ -787,7 +767,7 @@
 									<label class="col-sm-2 control-label" for="field-9"></label>
 									
 									<div class="col-sm-5">
-										<button class="btn btn-secondary btn-single">加入</button>
+										<input type="submit" name="submit" class="btn btn-secondary btn-single" value="加入小组"></input>
 									</div>
 								</div>
 

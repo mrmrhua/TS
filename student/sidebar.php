@@ -76,7 +76,7 @@ require("course.php");
                             echo "<span class='title'>" . $course_row['course_name'] . "</span>";
                             echo "</a>";
                             echo "<ul>";
-                            echo "<li class='active'>" .
+                            echo "<li>" .
                                 "<a href='group-info.php?cid=" . $course_row['cid'] . "'>" .
                                 "<span class='title'>小组详细</span>" .
                                 "</a>" .

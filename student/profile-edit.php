@@ -151,7 +151,7 @@
 											</a>
 										</li>
 										<li>
-											<a href="group-join.html">
+											<a href="group-join.php">
 												<span class="title">加入小组</span>
 											</a>
 										</li>
@@ -173,7 +173,7 @@
 											</a>
 										</li>
 										<li>
-											<a href="group-join.html">
+											<a href="group-join.php">
 												<span class="title">加入小组</span>
 											</a>
 										</li>
@@ -195,7 +195,7 @@
 											</a>
 										</li>
 										<li>
-											<a href="group-join.html">
+											<a href="group-join.php">
 												<span class="title">加入小组</span>
 											</a>
 										</li>

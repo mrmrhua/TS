@@ -1,5 +1,10 @@
 <?php
 	session_start();
+	require(dirname(dirname(__FILE__))."/dbconfig.php");
+	$db = new mysqli($db_host,$db_username,$db_password,$db_database);
+	$sql = "select group_name from group where leader_account='".$_SESSION['USERNAME']."' and cid=";
+	//$group_result =$db->query($sql);
+	//$group_row = $group_result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="zh">
@@ -104,72 +109,41 @@
 							<span class="title">小组</span>
 						</a>
 						<ul>
-							<li class="opened active">
-								<a href="#">
-									<span class="title">软件需求分析与设计</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
+							<?php 
+								require("course.php");
+							echo $_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING'];
+								while($course_row = $course_result->fetch_assoc()) {
+									if($course_row['cid']==$_GET['cid']){     //选中当前行
+										echo "<li class='opened active'>
+												<a href='#'>
+									<span class='title'>".$course_row['course_name']."</span>
+								</a>";
+									}
+									else{
+										echo "<li>
+								<a href='#'>
+									<span class='title'>".$course_row['course_name']."</span>
+								</a>";
+									}
+									echo "<ul>
+									<li class='active'>
+										<a href='".$_SERVER['PHP_SELF']."?cid=".$course_row['cid']."'>
+											<span class='title'>小组详细</span>
 										</a>
 									</li>
 									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
+										<a href='group-setup.php?cid=".$course_row['cid']."'>
+											<span class='title'>建立小组</span>
 										</a>
 									</li>
 									<li>
-										<a href="group-join.html">
-											<span class="title">加入小组</span>
+										<a href='group-join.php'>
+											<span class='title'>加入小组</span>
 										</a>
 									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">
-									<span class="title">项目管理与案例分析</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-join.html">
-											<span class="title">加入小组</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">
-									<span class="title">软件质量保证与测试</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-join.html">
-											<span class="title">加入小组</span>
-										</a>
-									</li>
-								</ul>
-							</li>
+								</ul></li>";
+								}
+							?>
 						</ul>
 					</li>
 
@@ -590,26 +564,10 @@
 			<div class="page-title">
 				
 				<div class="title-env">
-					<h1 class="title">软件需求分析与设计 - G10</h1>
+					<h1 class="title">软件需求分析与设计 </h1>
 					<p class="description">王尼玛和他的小伙伴们</p>
 				</div>
-				
-				<div class="breadcrumb-env">
-					<ol class="breadcrumb bc-1">
-						<li>
-							<a href="#">主页</a>
-						</li>
-						<li>
-							小组
-						</li>
-						<li>
-							软件需求分析与设计
-						</li>
-						<li>
-							<strong>小组详细</strong>
-						</li>
-					</ol>
-				</div>
+
 			</div>
 
 			<section class="profile-env">
