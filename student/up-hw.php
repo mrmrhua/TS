@@ -17,9 +17,6 @@
         $size = $file["size"];//上传文件的大小
         $tmp_name = $file["tmp_name"];//上传文件的临时存放路径
 
-        echo $name;
-        // $size;
-
         //把上传的临时文件移动到hw目录下面
        move_uploaded_file($tmp_name, iconv("UTF-8","gb2312",'../hw/'.$name));  //转码
 

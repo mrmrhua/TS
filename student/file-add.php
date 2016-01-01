@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -40,227 +43,7 @@
 		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
 		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
 		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
-		<div class="sidebar-menu toggle-others fixed">
-			
-			<div class="sidebar-menu-inner">	
-				
-				<header class="logo-env">
-					
-					<!-- logo -->
-					<div class="logo">
-						<a href="index.php" class="logo-expanded">
-							<img src="assets/images/logo@2x.png" width="80" alt="" />
-						</a>
-						
-						<a href="index.php" class="logo-collapsed">
-							<img src="assets/images/logo-collapsed@2x.png" width="40" alt="" />
-						</a>
-					</div>
-					
-					<!-- This will toggle the mobile menu and will be visible only on mobile devices -->
-					<div class="mobile-menu-toggle visible-xs">
-						<a href="#" data-toggle="user-info-menu">
-							<i class="fa-bell-o"></i>
-							<span class="badge badge-success">7</span>
-						</a>
-						
-						<a href="#" data-toggle="mobile-menu">
-							<i class="fa-bars"></i>
-						</a>
-					</div>
-					
-					<!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
-					<div class="settings-icon">
-						<a href="#" data-toggle="settings-pane" data-animate="true">
-							<i class="linecons-cog"></i>
-						</a>
-					</div>
-					
-								
-				</header>
-						
-				
-						
-				<ul id="main-menu" class="main-menu">
-					<!-- add class "multiple-expanded" to allow multiple submenus to open -->
-					<!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-
-					<!-- 课程 -->
-					<li>
-						<a href="#">
-							<i class="linecons-cog"></i>
-							<span class="title">课程</span>
-						</a>
-						<ul>
-							<li>
-								<a href="course-list.php">
-									<span class="title">课程列表</span>
-								</a>
-							</li>
-							<li>
-								<a href="course-info.php">
-									<span class="title">课程介绍</span>
-								</a>
-							</li>
-							<li>
-								<a href="course-teacher-info.php">
-									<span class="title">教师介绍</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 小组 -->
-					<li>
-						<a href="#">
-							<i class="linecons-desktop"></i>
-							<span class="title">小组</span>
-						</a>
-						<ul>
-							<li>
-								<a href="#">
-									<span class="title">软件需求分析与设计</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-join.php">
-											<span class="title">加入小组</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">
-									<span class="title">项目管理与案例分析</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-join.php">
-											<span class="title">加入小组</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">
-									<span class="title">软件质量保证与测试</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-join.php">
-											<span class="title">加入小组</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 作业 -->
-					<li>
-						<a href="#">
-							<i class="linecons-note"></i>
-							<span class="title">作业</span>
-						</a>
-						<ul>
-							<li>
-								<a href="homework-list.php">
-									<span class="title">作业列表</span>
-								</a>
-							</li>
-							<li>
-								<a href="homework-info.html">
-									<span class="title">作业详细</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 课程资料 -->
-					<li class="opened active">
-						<a href="#">
-							<i class="linecons-star"></i>
-							<span class="title">资料</span>
-						</a>
-						<ul>
-							<li>
-								<a href="file-list.php">
-									<span class="title">资料列表</span>
-								</a>
-							</li>
-							<li class="active">
-								<a href="file-add.php">
-									<span class="title">新的资料</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 消息 -->
-					<li>
-						<a href="#">
-							<i class="linecons-mail"></i>
-							<span class="title">消息</span>
-							<span class="label label-success pull-right">5</span>
-						</a>
-						<ul>
-							<li>
-								<a href="message-received-list.html">
-									<span class="title">收信箱</span>
-								</a>
-							</li>
-							<li>
-								<a href="message-sent-list.html">
-									<span class="title">已发送</span>
-								</a>
-							</li>
-							<li>
-								<a href="message-view.html">
-									<span class="title">查看消息</span>
-								</a>
-							</li>
-							<li>
-								<a href="message-write.html">
-									<span class="title">写消息</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-						
-			</div>
-			
-		</div>
+		<?php require("sidebar.php"); ?>
 		
 		<div class="main-content">
 					
@@ -600,29 +383,6 @@
 				
 			</nav>
 
-			<!-- 主内容-zhuneirong -->
-			<div class="page-title">
-				
-				<div class="title-env">
-					<h1 class="title">新的资料</h1>
-					<p class="description">上传新的资料并选择共享范围</p>
-				</div>
-				
-				<div class="breadcrumb-env">
-					<ol class="breadcrumb bc-1">
-						<li>
-							<a href="index.php"><i class="fa-home"></i>主页</a>
-						</li>
-						<li>
-							<a href="#">资料</a>
-						</li>
-						<li>
-							<strong>新的资料</strong>
-						</li>
-					</ol>
-				</div>
-			</div>
-
 			<div class="panel panel-default">
 			
 				<div class="panel-heading">
@@ -633,166 +393,45 @@
 				
 				<div class="panel-body">
 					
-					<script type="text/javascript">
-						jQuery(document).ready(function($)
-						{
-							var i = 1,
-								$example_dropzone_filetable = $("#example-dropzone-filetable"),
-								example_dropzone = $("#advancedDropzone").dropzone({
-								url: 'data/upload-file.php',
-								
-								// Events
-								addedfile: function(file)
-								{
-									if(i == 1)
-									{
-										$example_dropzone_filetable.find('tbody').html('');
-									}
-									
-									var size = parseInt(file.size/1024, 10);
-									size = size < 1024 ? (size + " KB") : (parseInt(size/1024, 10) + " MB");
-									
-									var	$el = $('<tr>\
-													<td class="text-center">'+(i++)+'</td>\
-													<td>'+file.name+'</td>\
-													<td><div class="progress progress-striped"><div class="progress-bar progress-bar-warning"></div></div></td>\
-													<td>'+size+'</td>\
-													<td>Uploading...</td>\
-												</tr>');
-									
-									$example_dropzone_filetable.find('tbody').append($el);
-									file.fileEntryTd = $el;
-									file.progressBar = $el.find('.progress-bar');
-								},
-								
-								uploadprogress: function(file, progress, bytesSent)
-								{
-									file.progressBar.width(progress + '%');
-								},
-								
-								success: function(file)
-								{
-									file.fileEntryTd.find('td:last').html('<span class="text-success">Uploaded</span>');
-									file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-success');
-								},
-								
-								error: function(file)
-								{
-									file.fileEntryTd.find('td:last').html('<span class="text-danger">Failed</span>');
-									file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-red');
-								}
-							});
-							
-							$("#advancedDropzone").css({
-								minHeight: 200
-							});
-			
-						});
-					</script>
-					
 					<br />
-					<div class="row">
-						<div class="col-sm-3 text-center">
-						
-							<div id="advancedDropzone" class="droppable-area">
-								拖拽资料至此
-							</div>
-							
+
+					<form action='up-material.php' enctype="multipart/form-data" method="post"
+						  name="uploadfile" >
+					<div class = "row">
+
+						<div class="col-sm-4 text-left">
+							<label>选择课程:</label>
+							<select  name="course">
+								<?php
+									require("course.php");
+									while($course_row = $course_result->fetch_assoc()){
+										echo "<option value='".$course_row['cid']."'>".$course_row['course_name']."</option>";
+									}
+								?>
+
+							</select>
 						</div>
-						<div class="col-sm-9">
-							
-							<table class="table table-bordered table-striped" id="example-dropzone-filetable">
-								<thead>
-									<tr>
-										<th width="1%" class="text-center">#</th>
-										<th width="50%">资料名称</th>
-										<th width="20%">上传进度</th>
-										<th>大小</th>
-										<th>状态</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td colspan="5">Files list will appear here</td>
-									</tr>
-								</tbody>
-							</table>
+						<div class="col-sm-8 text-center">
+
+							<input type="file" name="file" ><br>
+
+
+						</div>
+					</div>
+						<br>
+						<br>
+					<div class = "row">
+						<div class="col-sm-3 text-left"></div>
+						<divclass="col-sm-9 text-left">
+							<input  type="submit" name="submit" value="上传" class="btn btn-secondary btn-single">
 						</div>
 					</div>
 
-					<form role="form" class="form-horizontal">
-
-						<div class="form-group-separator"></div>						
-					
-						<div class="form-group">
-							<label class="col-sm-2 control-label" for="field-1">共享范围</label>
-							
-							<div class="col-sm-2">
-								<script type="text/javascript">
-									jQuery(document).ready(function($)
-									{
-										$("#sboxit-1").selectBoxIt().on('open', function()
-										{
-											// Adding Custom Scrollbar
-											$(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
-										});
-									});
-								</script>
-								
-								<select class="form-control" id="sboxit-1">
-									<option value="all">全部课程</option>
-									<option value="sre">软件需求分析与设计</option>
-									<option value="pm">项目管理与案例分析</option>
-									<option value="pm">软件质量保证与测试</option>
-								</select>
-							</div>
-							<div class="col-sm-2">
-								<script type="text/javascript">
-									jQuery(document).ready(function($)
-									{
-										$("#sboxit-2").selectBoxIt().on('open', function()
-										{
-											// Adding Custom Scrollbar
-											$(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
-										});
-									});
-								</script>
-								
-								<select class="form-control" id="sboxit-2">
-									<option value="all">全部班级</option>
-									<option value="self">自己的班级</option>
-								</select>
-							</div>
-							<div class="col-sm-2">
-								<script type="text/javascript">
-									jQuery(document).ready(function($)
-									{
-										$("#sboxit-3").selectBoxIt().on('open', function()
-										{
-											// Adding Custom Scrollbar
-											$(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
-										});
-									});
-								</script>
-								
-								<select class="form-control" id="sboxit-3">
-									<option value="all">全部小组</option>
-									<option value="self">自己的小组</option>
-								</select>
-							</div>
-						</div>
-								
-						<div class="form-group-separator"></div>
-
-						<div class="form-group">
-							<label class="col-sm-2 control-label" for="field-1"></label>
-							
-							<div class="col-sm-5">
-								<button class="btn btn-secondary btn-single">添加资料</button>
-							</div>
-						</div>	
-
 					</form>
+				</div>
+
+
+
 					
 				</div>
 			

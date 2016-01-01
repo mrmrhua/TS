@@ -449,7 +449,7 @@
 								echo "<tr>";
 								echo "<td><a href='course-info.php?cid=".$course_row['cid']."'><strong>".$course_row['course_name']."</strong></a></td>";
 								echo "<td><a href='course-teacher-info.php?tid=".$course_row['tid']."'><strong>".$course_row['teacher_name']."</strong></a></td>";
-								echo "<td>".$course_row['semeter']."</td>";
+								echo "<td>".$course_row['semester']."</td>";
 								echo "<td>".$course_row['week'].$course_row['begin_num']."-".$course_row['end_num']."</td>";
 
 								echo "<td>
