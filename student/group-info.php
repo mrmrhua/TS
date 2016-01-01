@@ -176,12 +176,12 @@
 						</a>
 						<ul>
 							<li>
-								<a href="file-list.html">
+								<a href="file-list.php">
 									<span class="title">资料列表</span>
 								</a>
 							</li>
 							<li>
-								<a href="file-add.html">
+								<a href="file-add.php">
 									<span class="title">新的资料</span>
 								</a>
 							</li>

@@ -387,7 +387,7 @@ session_start();
 			<?php
 				require(dirname(dirname(__FILE__))."/dbconfig.php");
 				$db = new mysqli($db_host,$db_username,$db_password,$db_database);
-				$sql = "select subject , requirement, ddl from homework where hw_id =".$_GET['hw_id'].";";
+				$sql = "select course_name,subject , requirement, ddl from homework where hw_id =".$_GET['hw_id'].";";
 				$hw_result =$db->query($sql);
 				$hw_row = $hw_result->fetch_assoc();
 			?>
@@ -441,10 +441,10 @@ session_start();
 			</div>
 
 			<div class="panel panel-default">
-			
+
 				<div class="panel-heading">
 					<h3 class="panel-title">
-						上传作业 
+						上传作业
 					</h3>
 					<div class="panel-options">
 						<a href="#" data-toggle="panel">
@@ -453,98 +453,35 @@ session_start();
 						</a>
 					</div>
 				</div>
-				
+
 				<div class="panel-body">
-					
-					<script type="text/javascript">
-						jQuery(document).ready(function($)
-						{
-							var i = 1,
-								$example_dropzone_filetable = $("#example-dropzone-filetable"),
-								example_dropzone = $("#advancedDropzone").dropzone({
-								url: 'data/upload-file.php',
-								
-								// Events
-								addedfile: function(file)
-								{
-									if(i == 1)
-									{
-										$example_dropzone_filetable.find('tbody').html('');
-									}
-									
-									var size = parseInt(file.size/1024, 10);
-									size = size < 1024 ? (size + " KB") : (parseInt(size/1024, 10) + " MB");
-									
-									var	$el = $('<tr>\
-													<td class="text-center">'+(i++)+'</td>\
-													<td>'+file.name+'</td>\
-													<td><div class="progress progress-striped"><div class="progress-bar progress-bar-warning"></div></div></td>\
-													<td>'+size+'</td>\
-													<td>Uploading...</td>\
-												</tr>');
-									
-									$example_dropzone_filetable.find('tbody').append($el);
-									file.fileEntryTd = $el;
-									file.progressBar = $el.find('.progress-bar');
-								},
-								
-								uploadprogress: function(file, progress, bytesSent)
-								{
-									file.progressBar.width(progress + '%');
-								},
-								
-								success: function(file)
-								{
-									file.fileEntryTd.find('td:last').html('<span class="text-success">Uploaded</span>');
-									file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-success');
-								},
-								
-								error: function(file)
-								{
-									file.fileEntryTd.find('td:last').html('<span class="text-danger">Failed</span>');
-									file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-red');
+
+					<div class = "row">
+						<div class="col-sm-6 text-center">
+							<form action='up-hw.php?hw_id=<?php echo $_GET['hw_id']; ?>' enctype="multipart/form-data" method="post"
+								  name="uploadfile" >
+								<input type="file" name="file" ><br>
+								<input  type="submit" name="submit" value="上传" class="btn btn-secondary btn-single">
+							</form>
+						</div>
+						<div class="col-sm-6 text-center">
+							<?php
+								$sql = "select handin_status from student_homework where student_account='".$_SESSION['USERNAME']."' and hw_id=".$_GET['hw_id'].";";
+								$res = $db->query($sql);
+								$row = $res->fetch_assoc();
+								if($row['handin_status']==1){
+									echo "<p>状态：已提交</p>";
 								}
-							});
-							
-							$("#advancedDropzone").css({
-								minHeight: 200
-							});
-			
-						});
-					</script>
-					
-					<br />
-					<div class="row">
-						<div class="col-sm-3 text-center">
-						
-							<div id="advancedDropzone" class="droppable-area">
-								点击上传或拖拽至此
-							</div>
-							
+								else{
+									echo "<p>状态：未提交</p>";
+								}
+
+							?>
 						</div>
-						<div class="col-sm-9">
-							
-							<table class="table table-bordered table-striped" id="example-dropzone-filetable">
-								<thead>
-									<tr>
-										<th width="1%" class="text-center">#</th>
-										<th width="50%">文件名称</th>
-										<th width="20%">上传进度</th>
-										<th>大小</th>
-										<th>状态</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td colspan="5">Files list will appear here</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+
 					</div>
-					
 				</div>
-			
+
 			</div>
 			<?php
 				$sql = "select score,evaluation from student_homework where hw_id=".$_GET['hw_id'].";";

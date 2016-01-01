@@ -323,13 +323,13 @@
 							<span class="title">资料</span>
 						</a>
 						<ul>
-							<li>
-								<a href="file-list.html">
+							<li class="active">
+								<a href="file-list.php">
 									<span class="title">资料列表</span>
 								</a>
 							</li>
-							<li class="active">
-								<a href="file-add.html">
+							<li>
+								<a href="file-add.php">
 									<span class="title">新的资料</span>
 								</a>
 							</li>
@@ -712,10 +712,9 @@
 
 			<!-- 主内容-zhuneirong -->
 			<div class="page-title">
-				
 				<div class="title-env">
-					<h1 class="title">新的资料</h1>
-					<p class="description">上传新的资料并选择共享范围</p>
+					<h1 class="title">资料列表</h1>
+					<p class="description">当前用户能下载的资料列表</p>
 				</div>
 				
 				<div class="breadcrumb-env">
@@ -727,187 +726,81 @@
 							<a href="#">资料</a>
 						</li>
 						<li>
-							<strong>新的资料</strong>
+							<strong>资料列表</strong>
 						</li>
 					</ol>
 				</div>
 			</div>
-
-			<div class="panel panel-default">
 			
+			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">
-						新的资料 
-					</h3>
+					<h3 class="panel-title">资料列表</h3>
+					
+					<div class="panel-options">
+						<a href="#" data-toggle="panel">
+							<span class="collapse-icon">&ndash;</span>
+							<span class="expand-icon">+</span>
+						</a>
+					</div>
 				</div>
-				
 				<div class="panel-body">
 					
 					<script type="text/javascript">
-						jQuery(document).ready(function($)
-						{
-							var i = 1,
-								$example_dropzone_filetable = $("#example-dropzone-filetable"),
-								example_dropzone = $("#advancedDropzone").dropzone({
-								url: 'data/upload-file.php',
-								
-								// Events
-								addedfile: function(file)
-								{
-									if(i == 1)
-									{
-										$example_dropzone_filetable.find('tbody').html('');
-									}
-									
-									var size = parseInt(file.size/1024, 10);
-									size = size < 1024 ? (size + " KB") : (parseInt(size/1024, 10) + " MB");
-									
-									var	$el = $('<tr>\
-													<td class="text-center">'+(i++)+'</td>\
-													<td>'+file.name+'</td>\
-													<td><div class="progress progress-striped"><div class="progress-bar progress-bar-warning"></div></div></td>\
-													<td>'+size+'</td>\
-													<td>Uploading...</td>\
-												</tr>');
-									
-									$example_dropzone_filetable.find('tbody').append($el);
-									file.fileEntryTd = $el;
-									file.progressBar = $el.find('.progress-bar');
-								},
-								
-								uploadprogress: function(file, progress, bytesSent)
-								{
-									file.progressBar.width(progress + '%');
-								},
-								
-								success: function(file)
-								{
-									file.fileEntryTd.find('td:last').html('<span class="text-success">Uploaded</span>');
-									file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-success');
-								},
-								
-								error: function(file)
-								{
-									file.fileEntryTd.find('td:last').html('<span class="text-danger">Failed</span>');
-									file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-red');
-								}
-							});
-							
-							$("#advancedDropzone").css({
-								minHeight: 200
-							});
-			
+					jQuery(document).ready(function($)
+					{
+						$("#example-1").dataTable({
+							aLengthMenu: [
+								[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]
+							]
 						});
+					});
 					</script>
 					
-					<br />
-					<div class="row">
-						<div class="col-sm-3 text-center">
-						
-							<div id="advancedDropzone" class="droppable-area">
-								拖拽资料至此
-							</div>
-							
-						</div>
-						<div class="col-sm-9">
-							
-							<table class="table table-bordered table-striped" id="example-dropzone-filetable">
-								<thead>
-									<tr>
-										<th width="1%" class="text-center">#</th>
-										<th width="50%">资料名称</th>
-										<th width="20%">上传进度</th>
-										<th>大小</th>
-										<th>状态</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td colspan="5">Files list will appear here</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-
-					<form role="form" class="form-horizontal">
-
-						<div class="form-group-separator"></div>						
-					
-						<div class="form-group">
-							<label class="col-sm-2 control-label" for="field-1">共享范围</label>
-							
-							<div class="col-sm-2">
-								<script type="text/javascript">
-									jQuery(document).ready(function($)
-									{
-										$("#sboxit-1").selectBoxIt().on('open', function()
-										{
-											// Adding Custom Scrollbar
-											$(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
-										});
-									});
-								</script>
-								
-								<select class="form-control" id="sboxit-1">
-									<option value="all">全部课程</option>
-									<option value="sre">软件需求分析与设计</option>
-									<option value="pm">项目管理与案例分析</option>
-									<option value="pm">软件质量保证与测试</option>
-								</select>
-							</div>
-							<div class="col-sm-2">
-								<script type="text/javascript">
-									jQuery(document).ready(function($)
-									{
-										$("#sboxit-2").selectBoxIt().on('open', function()
-										{
-											// Adding Custom Scrollbar
-											$(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
-										});
-									});
-								</script>
-								
-								<select class="form-control" id="sboxit-2">
-									<option value="all">全部班级</option>
-									<option value="self">自己的班级</option>
-								</select>
-							</div>
-							<div class="col-sm-2">
-								<script type="text/javascript">
-									jQuery(document).ready(function($)
-									{
-										$("#sboxit-3").selectBoxIt().on('open', function()
-										{
-											// Adding Custom Scrollbar
-											$(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
-										});
-									});
-								</script>
-								
-								<select class="form-control" id="sboxit-3">
-									<option value="all">全部小组</option>
-									<option value="self">自己的小组</option>
-								</select>
-							</div>
-						</div>
-								
-						<div class="form-group-separator"></div>
-
-						<div class="form-group">
-							<label class="col-sm-2 control-label" for="field-1"></label>
-							
-							<div class="col-sm-5">
-								<button class="btn btn-secondary btn-single">添加资料</button>
-							</div>
-						</div>	
-
-					</form>
-					
+					<table id="example-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th>资料名称</th>
+								<th>共享范围</th>
+								<th>上传人</th>
+								<th>上传日期</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><a href="#"><strong>Software_Requirements-Third Edition.pdf</strong></a></td>
+								<td>软件需求分析与设计</td>
+								<td>邢卫</td>
+								<td>2015/9/1</td>
+								<td>
+									<a href="#">下载</a>
+									<a href="#">在线查看</a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#"><strong>Software_Requirements-Third Edition.pdf</strong></a></td>
+								<td>软件需求分析与设计</td>
+								<td>邢卫</td>
+								<td>2015/9/1</td>
+								<td>
+									<a href="#">下载</a>
+									<a href="#">在线查看</a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#"><strong>Software_Requirements-Third Edition.pdf</strong></a></td>
+								<td>软件需求分析与设计</td>
+								<td>邢卫</td>
+								<td>2015/9/1</td>
+								<td>
+									<a href="#">下载</a>
+									<a href="#">在线查看</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-			
 			</div>
-
 			
 
 			
@@ -1081,10 +974,6 @@
 
 	<!-- Imported styles on this page -->
 	<link rel="stylesheet" href="assets/js/datatables/dataTables.bootstrap.css">
-	<link rel="stylesheet" href="assets/js/dropzone/css/dropzone.css">
-	<link rel="stylesheet" href="assets/js/select2/select2.css">
-	<link rel="stylesheet" href="assets/js/select2/select2-bootstrap.css">
-	<link rel="stylesheet" href="assets/js/multiselect/css/multi-select.css">
 
 	<!-- Bottom Scripts -->
 	<script src="assets/js/bootstrap.min.js"></script>
@@ -1094,25 +983,13 @@
 	<script src="assets/js/xenon-api.js"></script>
 	<script src="assets/js/xenon-toggles.js"></script>
 	<script src="assets/js/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="assets/js/moment.min.js"></script>
 
 
 	<!-- Imported scripts on this page -->
 	<script src="assets/js/datatables/dataTables.bootstrap.js"></script>
 	<script src="assets/js/datatables/yadcf/jquery.dataTables.yadcf.js"></script>
 	<script src="assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
-	<script src="assets/js/dropzone/dropzone.min.js"></script>
-	<script src="assets/js/daterangepicker/daterangepicker.js"></script>
-	<script src="assets/js/datepicker/bootstrap-datepicker.js"></script>
-	<script src="assets/js/timepicker/bootstrap-timepicker.min.js"></script>
-	<script src="assets/js/colorpicker/bootstrap-colorpicker.min.js"></script>
-	<script src="assets/js/select2/select2.min.js"></script>
-	<script src="assets/js/jquery-ui/jquery-ui.min.js"></script>
-	<script src="assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
-	<script src="assets/js/tagsinput/bootstrap-tagsinput.min.js"></script>
-	<script src="assets/js/typeahead.bundle.js"></script>
-	<script src="assets/js/handlebars.min.js"></script>
-	<script src="assets/js/multiselect/js/jquery.multi-select.js"></script>
+
 
 	<!-- JavaScripts initializations and stuff -->
 	<script src="assets/js/xenon-custom.js"></script>

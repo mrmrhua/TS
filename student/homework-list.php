@@ -463,7 +463,7 @@
 									echo "<td><span class='label label-warning'>未提交</span></td>";
 								}
 								else{
-									echo "<td><span class='label label-warning'>已提交</span></td>";
+									echo "<td><span class='label label-success'>已提交</span></td>";
 								}
 								if($hw_row['score_status'] == 0) {//未批
 									echo "<td>未批改</td>";
