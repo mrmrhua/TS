@@ -3,7 +3,6 @@
 	require(dirname(dirname(__FILE__))."/dbconfig.php");
 	if(isset($_SESSION['IDENTITY']) && $_SESSION['IDENTITY']==1){  //已经登录
 
-
 <!DOCTYPE html>
 <html lang="zh">
 <head>
