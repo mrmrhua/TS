@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -217,7 +216,7 @@
 					</li>
 
 					<!-- 班级 -->
-					<li>
+					<li class="opened active">
 						<a href="#">
 							<i class="linecons-desktop"></i>
 							<span class="title">班级</span>
@@ -233,18 +232,18 @@
 									<span class="title">新的班级</span>
 								</a>
 							</li>
-							<li>
+							<li class="active opened">
 								<a href="#">
 									<span class="title">软件需求分析与设计</span>
 								</a>
 								<ul>
-									<li>
+									<li class="active opened">
 										<a href="#">
 											<i class="entypo-flow-parallel"></i>
 											<span class="title">周五3、4、5</span>
 										</a>
 										<ul>
-											<li>
+											<li class="active opened">
 												<a href="class-students.html?">
 													<i class="entypo-flow-cascade"></i>
 													<span class="title">学生</span>
@@ -711,129 +710,208 @@
 				</ul>
 				
 			</nav>
-
-
+			
 			<!-- 主内容 -->
 			<div class="page-title">
-				
 				<div class="title-env">
-					<h1 class="title">编辑个人资料</h1>
-					<p class="description">教师编辑个人资料</p>
+					<h1 class="title">软件需求分析与设计 - 周五3、4、5</h1>
+					<p class="description">当前班级的学生列表，包括学号、姓名等信息</p>
 				</div>
 				
 				<div class="breadcrumb-env">
 					<ol class="breadcrumb bc-1">
 						<li>
-							<a href="index.php"><i class="fa-home"></i>主页</a>
+							<a href="index.html"><i class="fa-home"></i>主页</a>
 						</li>
 						<li>
-							<strong>编辑资料</strong>
+							<a href="class-list.html">班级</a>
+						</li>
+						<li>
+							<a href="#">软件需求分析与设计</a>
+						</li>
+						<li>
+							<a href="#">周五3、4、5</a>
+						</li>
+						<li>
+							<strong>学生</strong>
 						</li>
 					</ol>
 				</div>
 			</div>
-
-			<div class="row">
-				<div class="col-sm-12">
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">学生列表</h3>
 					
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">编辑资料</h3>
-							<div class="panel-options">
-								<a href="#" data-toggle="panel">
-									<span class="collapse-icon">&ndash;</span>
-									<span class="expand-icon">+</span>
-								</a>
-							</div>
-						</div>
-						<div class="panel-body">
-							
-							<form role="form" class="form-horizontal">
-								
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-1">姓名</label>
-									
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="input_name" placeholder="Placeholder" disabled>
-									</div>
-								</div>
-								
-								<div class="form-group-separator"></div>
-
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-2">院系</label>
-									
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="input_department" placeholder="Placeholder">
-									</div>
-								</div>
-								
-								<div class="form-group-separator"></div>
-
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-3">职称</label>
-									
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="input_title" placeholder="Placeholder">
-									</div>
-								</div>
-
-								<div class="form-group-separator"></div>
-
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-4">联系电话</label>
-									
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="input_tel" placeholder="Placeholder">
-									</div>
-								</div>
-
-								<div class="form-group-separator"></div>
-
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-4">电子邮件</label>
-									
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="input_email" placeholder="Placeholder">
-									</div>
-								</div>
-
-								<div class="form-group-separator"></div>
-
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-5">自我介绍</label>
-									
-									<div class="col-sm-5">
-										<textarea class="form-control autogrow" cols="5" id="input_selfintro" placeholder="I will grow as you enter new lines."></textarea>
-									</div>
-								</div>
-
-								<div class="form-group-separator"></div>
-
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-6">科研成果</label>
-									
-									<div class="col-sm-5">
-										<textarea class="form-control autogrow" cols="5" id="result" placeholder="I will grow as you enter new lines."></textarea>
-									</div>
-								</div>
-
-								<div class="form-group-separator"></div>
-
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-7"></label>
-									
-									<div class="col-sm-5">
-										<button type=submit class="btn btn-secondary btn-single">保存</button>
-									</div>
-								</div>
-								
-							</form>
-						</div>
+					<div class="panel-options">
+						<a href="#" data-toggle="panel">
+							<span class="collapse-icon">&ndash;</span>
+							<span class="expand-icon">+</span>
+						</a>
 					</div>
 				</div>
+				<div class="panel-body">
+					
+					<script type="text/javascript">
+					jQuery(document).ready(function($)
+					{
+						$("#example-1").dataTable({
+							aLengthMenu: [
+								[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]
+							]
+						});
+					});
+					</script>
+					
+					<table id="example-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th>学号</th>
+								<th>姓名</th>
+								<th>作业上交情况</th>
+								<th>总评分</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><a href="#"><strong>313010****</strong></a></td>
+								<td>王尼玛</td>
+								<td>5/5</td>
+								<td></td>
+								<td><a href="#">详细</a>
+								<a href="#">消息</a>
+								<a href="#">删除</a></td>
+							</tr>
+							<tr>
+								<td><a href="#"><strong>313010****</strong></a></td>
+								<td>李尼玛</td>
+								<td>5/5</td>
+								<td></td>
+								<td><a href="#">详细</a>
+								<a href="#">消息</a>
+								<a href="#">删除</a></td>
+							</tr>
+							<tr>
+								<td><a href="#"><strong>313010****</strong></a></td>
+								<td>王尼玛</td>
+								<td>5/5</td>
+								<td></td>
+								<td><a href="#">详细</a>
+								<a href="#">消息</a>
+								<a href="#">删除</a></td>
+							</tr>
+							<tr>
+								<td><a href="#"><strong>313010****</strong></a></td>
+								<td>王尼玛</td>
+								<td>5/5</td>
+								<td></td>
+								<td><a href="#">详细</a>
+								<a href="#">消息</a>
+								<a href="#">删除</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
+			<div class="panel panel-default">
 			
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						导入名单 
+					</h3>
+				</div>
+				
+				<div class="panel-body">
+					
+					<script type="text/javascript">
+						jQuery(document).ready(function($)
+						{
+							var i = 1,
+								$example_dropzone_filetable = $("#example-dropzone-filetable"),
+								example_dropzone = $("#advancedDropzone").dropzone({
+								url: 'data/upload-file.php',
+								
+								// Events
+								addedfile: function(file)
+								{
+									if(i == 1)
+									{
+										$example_dropzone_filetable.find('tbody').html('');
+									}
+									
+									var size = parseInt(file.size/1024, 10);
+									size = size < 1024 ? (size + " KB") : (parseInt(size/1024, 10) + " MB");
+									
+									var	$el = $('<tr>\
+													<td class="text-center">'+(i++)+'</td>\
+													<td>'+file.name+'</td>\
+													<td><div class="progress progress-striped"><div class="progress-bar progress-bar-warning"></div></div></td>\
+													<td>'+size+'</td>\
+													<td>Uploading...</td>\
+												</tr>');
+									
+									$example_dropzone_filetable.find('tbody').append($el);
+									file.fileEntryTd = $el;
+									file.progressBar = $el.find('.progress-bar');
+								},
+								
+								uploadprogress: function(file, progress, bytesSent)
+								{
+									file.progressBar.width(progress + '%');
+								},
+								
+								success: function(file)
+								{
+									file.fileEntryTd.find('td:last').html('<span class="text-success">Uploaded</span>');
+									file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-success');
+								},
+								
+								error: function(file)
+								{
+									file.fileEntryTd.find('td:last').html('<span class="text-danger">Failed</span>');
+									file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-red');
+								}
+							});
+							
+							$("#advancedDropzone").css({
+								minHeight: 200
+							});
+			
+						});
+					</script>
+					
+					<br />
+					<div class="row">
+						<div class="col-sm-3 text-center">
+						
+							<div id="advancedDropzone" class="droppable-area">
+								拖拽Excel至此
+							</div>
+							
+						</div>
+						<div class="col-sm-9">
+							
+							<table class="table table-bordered table-striped" id="example-dropzone-filetable">
+								<thead>
+									<tr>
+										<th width="1%" class="text-center">#</th>
+										<th width="50%">资料名称</th>
+										<th width="20%">上传进度</th>
+										<th>大小</th>
+										<th>状态</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="5">Files list will appear here</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>	
+				</div>
+			</div>		
 
 			<!-- Main Footer -->
 			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
@@ -1004,6 +1082,10 @@
 
 	<!-- Imported styles on this page -->
 	<link rel="stylesheet" href="assets/js/datatables/dataTables.bootstrap.css">
+	<link rel="stylesheet" href="assets/js/dropzone/css/dropzone.css">
+	<link rel="stylesheet" href="assets/js/select2/select2.css">
+	<link rel="stylesheet" href="assets/js/select2/select2-bootstrap.css">
+	<link rel="stylesheet" href="assets/js/multiselect/css/multi-select.css">
 
 	<!-- Bottom Scripts -->
 	<script src="assets/js/bootstrap.min.js"></script>
@@ -1013,13 +1095,25 @@
 	<script src="assets/js/xenon-api.js"></script>
 	<script src="assets/js/xenon-toggles.js"></script>
 	<script src="assets/js/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="assets/js/moment.min.js"></script>
 
 
 	<!-- Imported scripts on this page -->
 	<script src="assets/js/datatables/dataTables.bootstrap.js"></script>
 	<script src="assets/js/datatables/yadcf/jquery.dataTables.yadcf.js"></script>
 	<script src="assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
-
+	<script src="assets/js/dropzone/dropzone.min.js"></script>
+	<script src="assets/js/daterangepicker/daterangepicker.js"></script>
+	<script src="assets/js/datepicker/bootstrap-datepicker.js"></script>
+	<script src="assets/js/timepicker/bootstrap-timepicker.min.js"></script>
+	<script src="assets/js/colorpicker/bootstrap-colorpicker.min.js"></script>
+	<script src="assets/js/select2/select2.min.js"></script>
+	<script src="assets/js/jquery-ui/jquery-ui.min.js"></script>
+	<script src="assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+	<script src="assets/js/tagsinput/bootstrap-tagsinput.min.js"></script>
+	<script src="assets/js/typeahead.bundle.js"></script>
+	<script src="assets/js/handlebars.min.js"></script>
+	<script src="assets/js/multiselect/js/jquery.multi-select.js"></script>
 
 	<!-- JavaScripts initializations and stuff -->
 	<script src="assets/js/xenon-custom.js"></script>

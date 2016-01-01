@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -217,7 +216,7 @@
 					</li>
 
 					<!-- 班级 -->
-					<li>
+					<li class="opened active">
 						<a href="#">
 							<i class="linecons-desktop"></i>
 							<span class="title">班级</span>
@@ -228,7 +227,7 @@
 									<span class="title">班级列表</span>
 								</a>
 							</li>
-							<li>
+							<li class="active">
 								<a href="class-add.html">
 									<span class="title">新的班级</span>
 								</a>
@@ -712,33 +711,35 @@
 				
 			</nav>
 
-
 			<!-- 主内容 -->
 			<div class="page-title">
 				
 				<div class="title-env">
-					<h1 class="title">编辑个人资料</h1>
-					<p class="description">教师编辑个人资料</p>
+					<h1 class="title">新的班级</h1>
+					<p class="description">在已有的课程下，根据时间新建班级</p>
 				</div>
 				
 				<div class="breadcrumb-env">
 					<ol class="breadcrumb bc-1">
 						<li>
-							<a href="index.php"><i class="fa-home"></i>主页</a>
+							<a href="index.html"><i class="fa-home"></i>主页</a>
 						</li>
 						<li>
-							<strong>编辑资料</strong>
+							<a href="course-list.html">班级</a>
+						</li>
+						<li>
+							<strong>新的班级</strong>
 						</li>
 					</ol>
 				</div>
 			</div>
-
+			
 			<div class="row">
 				<div class="col-sm-12">
 					
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">编辑资料</h3>
+							<h3 class="panel-title">新的班级</h3>
 							<div class="panel-options">
 								<a href="#" data-toggle="panel">
 									<span class="collapse-icon">&ndash;</span>
@@ -751,88 +752,130 @@
 							<form role="form" class="form-horizontal">
 								
 								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-1">姓名</label>
+									<label class="col-sm-2 control-label" for="field-1">课程</label>
 									
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="input_name" placeholder="Placeholder" disabled>
+									<div class="col-sm-3">
+										<script type="text/javascript">
+											jQuery(document).ready(function($)
+											{
+												$("#sboxit-1").selectBoxIt().on('open', function()
+												{
+													// Adding Custom Scrollbar
+													$(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+												});
+											});
+										</script>
+										
+										<select class="form-control" id="sboxit-1">
+											<option>选择课程...</option>
+											<option value="sre">软件需求分析与设计</option>
+											<option value="pm">项目管理与案例分析</option>
+										</select>
 									</div>
 								</div>
 								
 								<div class="form-group-separator"></div>
 
 								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-2">院系</label>
+									<label class="col-sm-2 control-label" for="field-1">上课时间</label>
 									
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="input_department" placeholder="Placeholder">
+									<div class="col-sm-1">
+										<script type="text/javascript">
+											jQuery(document).ready(function($)
+											{
+												$("#sboxit-2").selectBoxIt().on('open', function()
+												{
+													// Adding Custom Scrollbar
+													$(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+												});
+											});
+										</script>
+										
+										<select class="form-control" id="sboxit-2">
+											<option value="Mon">周一</option>
+											<option value="Tue">周二</option>
+											<option value="Wed">周三</option>
+											<option value="Thu">周四</option>
+											<option value="Fri">周五</option>
+											<option value="Sat">周六</option>
+											<option value="Sun">周日</option>
+										</select>
 									</div>
+									<div class="col-sm-1">
+										<script type="text/javascript">
+											jQuery(document).ready(function($)
+											{
+												$("#sboxit-3").selectBoxIt().on('open', function()
+												{
+													// Adding Custom Scrollbar
+													$(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+												});
+											});
+										</script>
+										
+										<select class="form-control" id="sboxit-3">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											<option value="13">13</option>
+										</select>
+									</div>
+									<div class="col-sm-1">
+										<script type="text/javascript">
+											jQuery(document).ready(function($)
+											{
+												$("#sboxit-4").selectBoxIt().on('open', function()
+												{
+													// Adding Custom Scrollbar
+													$(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+												});
+											});
+										</script>
+										
+										<select class="form-control" id="sboxit-4">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											<option value="13">13</option>
+										</select>
+									</div>
+
 								</div>
-								
+
 								<div class="form-group-separator"></div>
 
 								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-3">职称</label>
+									<label class="col-sm-2 control-label" for="field-1"></label>
 									
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="input_title" placeholder="Placeholder">
+										<button class="btn btn-secondary btn-single">新建班级</button>
 									</div>
-								</div>
+								</div>	
 
-								<div class="form-group-separator"></div>
-
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-4">联系电话</label>
-									
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="input_tel" placeholder="Placeholder">
-									</div>
-								</div>
-
-								<div class="form-group-separator"></div>
-
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-4">电子邮件</label>
-									
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="input_email" placeholder="Placeholder">
-									</div>
-								</div>
-
-								<div class="form-group-separator"></div>
-
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-5">自我介绍</label>
-									
-									<div class="col-sm-5">
-										<textarea class="form-control autogrow" cols="5" id="input_selfintro" placeholder="I will grow as you enter new lines."></textarea>
-									</div>
-								</div>
-
-								<div class="form-group-separator"></div>
-
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-6">科研成果</label>
-									
-									<div class="col-sm-5">
-										<textarea class="form-control autogrow" cols="5" id="result" placeholder="I will grow as you enter new lines."></textarea>
-									</div>
-								</div>
-
-								<div class="form-group-separator"></div>
-
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-7"></label>
-									
-									<div class="col-sm-5">
-										<button type=submit class="btn btn-secondary btn-single">保存</button>
-									</div>
-								</div>
-								
 							</form>
 						</div>
 					</div>
 				</div>
 			</div>
+
 			
 
 			<!-- Main Footer -->
@@ -1004,6 +1047,9 @@
 
 	<!-- Imported styles on this page -->
 	<link rel="stylesheet" href="assets/js/datatables/dataTables.bootstrap.css">
+	<link rel="stylesheet" href="assets/js/select2/select2.css">
+	<link rel="stylesheet" href="assets/js/select2/select2-bootstrap.css">
+	<link rel="stylesheet" href="assets/js/multiselect/css/multi-select.css">
 
 	<!-- Bottom Scripts -->
 	<script src="assets/js/bootstrap.min.js"></script>
@@ -1013,12 +1059,22 @@
 	<script src="assets/js/xenon-api.js"></script>
 	<script src="assets/js/xenon-toggles.js"></script>
 	<script src="assets/js/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="assets/js/moment.min.js"></script>
+
 
 
 	<!-- Imported scripts on this page -->
-	<script src="assets/js/datatables/dataTables.bootstrap.js"></script>
-	<script src="assets/js/datatables/yadcf/jquery.dataTables.yadcf.js"></script>
-	<script src="assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
+	<script src="assets/js/daterangepicker/daterangepicker.js"></script>
+	<script src="assets/js/datepicker/bootstrap-datepicker.js"></script>
+	<script src="assets/js/timepicker/bootstrap-timepicker.min.js"></script>
+	<script src="assets/js/colorpicker/bootstrap-colorpicker.min.js"></script>
+	<script src="assets/js/select2/select2.min.js"></script>
+	<script src="assets/js/jquery-ui/jquery-ui.min.js"></script>
+	<script src="assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+	<script src="assets/js/tagsinput/bootstrap-tagsinput.min.js"></script>
+	<script src="assets/js/typeahead.bundle.js"></script>
+	<script src="assets/js/handlebars.min.js"></script>
+	<script src="assets/js/multiselect/js/jquery.multi-select.js"></script>
 
 
 	<!-- JavaScripts initializations and stuff -->

@@ -1,3 +1,10 @@
+<?php
+	session_start();
+	require(dirname(dirname(__FILE__))."/dbconfig.php");
+	
+	if(isset($_SESSION['IDENTITY']) && $_SESSION['IDENTITY']==1){  //已经登录
+	require("teacher-info.php");
+?>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -32,117 +39,7 @@
 </head>
 <body class="page-body">
 
-	<div class="settings-pane">
-			
-		<a href="#" data-toggle="settings-pane" data-animate="true">
-			&times;
-		</a>
-		
-		<div class="settings-pane-inner">
-			
-			<div class="row">
-				
-				<div class="col-md-4">
-					
-					<div class="user-info">
-						
-						<div class="user-image">
-							<a href="profile-main.html">
-								<img src="assets/images/user-2.png" class="img-responsive img-circle" />
-							</a>
-						</div>
-						
-						<div class="user-details">
-							
-							<h3>
-								<a href="profile-main.html">邢卫</a>
-								
-								<!-- Available statuses: is-online, is-idle, is-busy and is-offline -->
-								<span class="user-status is-online"></span>
-							</h3>
-							
-							<p class="user-title">软件需求分析与设计</p>
-							
-							<div class="user-links">
-								<a href="profile-edit.html" class="btn btn-primary">编辑资料</a>
-								<a href="password-change.html" class="btn btn-success">修改密码</a>
-							</div>
-							
-						</div>
-						
-					</div>
-					
-				</div>
-				
-				<div class="col-md-8 link-blocks-env">
-					
-					<div class="links-block left-sep">
-						<h4>
-							<span>通知</span>
-						</h4>
-						
-						<ul class="list-unstyled">
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk1" />
-								<label for="sp-chk1">用户消息</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk2" />
-								<label for="sp-chk2">作业事件</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk3" />
-								<label for="sp-chk3">课程通知</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk4" />
-								<label for="sp-chk4">站内通知</label>
-							</li>
-						</ul>
-					</div>
-					
-					<div class="links-block left-sep">
-						<h4>
-							<a href="#">
-								<span>Help Desk</span>
-							</a>
-						</h4>
-						
-						<ul class="list-unstyled">
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Support Center
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Submit a Ticket
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Domains Protocol
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Terms of Service
-								</a>
-							</li>
-						</ul>
-					</div>
-					
-				</div>
-				
-			</div>
-		
-		</div>
-		
-	</div>
+	<?php require("settingpane.php");?>
 <!-- 	<div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
  -->	
 	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
@@ -158,11 +55,11 @@
 					
 					<!-- logo -->
 					<div class="logo">
-						<a href="dashboard-1.html" class="logo-expanded">
+						<p class="logo-expanded">
 							<img src="assets/images/logo@2x.png" width="80" alt="" />
 						</a>
 						
-						<a href="dashboard-1.html" class="logo-collapsed">
+						<p class="logo-collapsed">
 							<img src="assets/images/logo-collapsed@2x.png" width="40" alt="" />
 						</a>
 					</div>
@@ -203,12 +100,12 @@
 						</a>
 						<ul>
 							<li>
-								<a href="course-list.html">
+								<a href="course-list.php">
 									<span class="title">课程列表</span>
 								</a>
 							</li>
 							<li>
-								<a href="course-info-edit.html">
+								<a href="course-info-edit.php">
 									<span class="title">新的课程</span>
 								</a>
 							</li>
@@ -223,62 +120,16 @@
 						</a>
 						<ul>
 							<li>
-								<a href="class-list.html">
+								<a href="class-list.php">
 									<span class="title">班级列表</span>
 								</a>
 							</li>
 							<li>
-								<a href="class-add.html">
+								<a href="class-add.php">
 									<span class="title">新的班级</span>
 								</a>
 							</li>
-							<li>
-								<a href="#">
-									<span class="title">软件需求分析与设计</span>
-								</a>
-								<ul>
-									<li>
-										<a href="#">
-											<i class="entypo-flow-parallel"></i>
-											<span class="title">周五3、4、5</span>
-										</a>
-										<ul>
-											<li>
-												<a href="class-students.html?">
-													<i class="entypo-flow-cascade"></i>
-													<span class="title">学生</span>
-												</a>
-											</li>
-											<li>
-												<a href="class-groups.html?">
-													<i class="entypo-flow-cascade"></i>
-													<span class="title">小组</span>
-												</a>
-											</li>
-										</ul>
-									</li>
-									<li>
-										<a href="#">
-											<i class="entypo-flow-parallel"></i>
-											<span class="title">周五6、7、8</span>
-										</a>
-										<ul>
-											<li>
-												<a href="class-students.html?">
-													<i class="entypo-flow-cascade"></i>
-													<span class="title">学生</span>
-												</a>
-											</li>
-											<li>
-												<a href="class-groups.html?">
-													<i class="entypo-flow-cascade"></i>
-													<span class="title">小组</span>
-												</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
+							
 						</ul>
 					</li>
 
@@ -376,340 +227,7 @@
 		<div class="main-content">
 					
 			<!-- User Info, Notifications and Menu Bar -->
-			<nav class="navbar user-info-navbar" role="navigation">
-				
-				<!-- Left links for user info navbar -->
-				<ul class="user-info-menu left-links list-inline list-unstyled">
-					
-					<!-- 隐藏左边菜单 -->
-					<li class="hidden-sm hidden-xs">
-						<a href="#" data-toggle="sidebar">
-							<i class="fa-bars"></i>
-						</a>
-					</li>
-					
-					<!-- 消息 -->
-					<li class="dropdown hover-line">
-						<a href="#" data-toggle="dropdown">
-							<i class="fa-envelope-o"></i>
-							<span class="badge badge-green">15</span>
-						</a>
-							
-						<ul class="dropdown-menu messages">
-							<li>
-									
-								<ul class="dropdown-menu-list list-unstyled ps-scrollbar">
-								
-									<li class="active"><!-- "active" class means message is unread -->
-										<a href="#">
-											<span class="line">
-												<strong>Luc Chartier</strong>
-												<span class="light small">- yesterday</span>
-											</span>
-											
-											<span class="line desc small">
-												This ain’t our first item, it is the best of the rest.
-											</span>
-										</a>
-									</li>
-									
-									<li class="active">
-										<a href="#">
-											<span class="line">
-												<strong>Salma Nyberg</strong>
-												<span class="light small">- 2 days ago</span>
-											</span>
-											
-											<span class="line desc small">
-												Oh he decisively impression attachment friendship so if everything. 
-											</span>
-										</a>
-									</li>
-									
-									<li>
-										<a href="#">
-											<span class="line">
-												Hayden Cartwright
-												<span class="light small">- a week ago</span>
-											</span>
-											
-											<span class="line desc small">
-												Whose her enjoy chief new young. Felicity if ye required likewise so doubtful.
-											</span>
-										</a>
-									</li>
-									
-									<li>
-										<a href="#">
-											<span class="line">
-												Sandra Eberhardt
-												<span class="light small">- 16 days ago</span>
-											</span>
-											
-											<span class="line desc small">
-												On so attention necessary at by provision otherwise existence direction.
-											</span>
-										</a>
-									</li>
-									
-									<!-- Repeated -->
-									
-									<li class="active"><!-- "active" class means message is unread -->
-										<a href="#">
-											<span class="line">
-												<strong>Luc Chartier</strong>
-												<span class="light small">- yesterday</span>
-											</span>
-											
-											<span class="line desc small">
-												This ain’t our first item, it is the best of the rest.
-											</span>
-										</a>
-									</li>
-									
-									<li class="active">
-										<a href="#">
-											<span class="line">
-												<strong>Salma Nyberg</strong>
-												<span class="light small">- 2 days ago</span>
-											</span>
-											
-											<span class="line desc small">
-												Oh he decisively impression attachment friendship so if everything. 
-											</span>
-										</a>
-									</li>
-									
-									<li>
-										<a href="#">
-											<span class="line">
-												Hayden Cartwright
-												<span class="light small">- a week ago</span>
-											</span>
-											
-											<span class="line desc small">
-												Whose her enjoy chief new young. Felicity if ye required likewise so doubtful.
-											</span>
-										</a>
-									</li>
-									
-									<li>
-										<a href="#">
-											<span class="line">
-												Sandra Eberhardt
-												<span class="light small">- 16 days ago</span>
-											</span>
-											
-											<span class="line desc small">
-												On so attention necessary at by provision otherwise existence direction.
-											</span>
-										</a>
-									</li>
-									
-								</ul>
-								
-							</li>
-							
-							<li class="external">
-								<a href="blank-sidebar.html">
-									<span>All Messages</span>
-									<i class="fa-link-ext"></i>
-								</a>
-							</li>
-						</ul>
-					</li>
-					
-					<!-- 提醒 -->
-					<li class="dropdown hover-line">
-						<a href="#" data-toggle="dropdown">
-							<i class="fa-bell-o"></i>
-							<span class="badge badge-purple">7</span>
-						</a>
-							
-						<ul class="dropdown-menu notifications">
-							<li class="top">
-								<p class="small">
-									<a href="#" class="pull-right">Mark all Read</a>
-									You have <strong>3</strong> new notifications.
-								</p>
-							</li>
-							
-							<li>
-								<ul class="dropdown-menu-list list-unstyled ps-scrollbar">
-									<li class="active notification-success">
-										<a href="#">
-											<i class="fa-user"></i>
-											
-											<span class="line">
-												<strong>New user registered</strong>
-											</span>
-											
-											<span class="line small time">
-												30 seconds ago
-											</span>
-										</a>
-									</li>
-									
-									<li class="active notification-secondary">
-										<a href="#">
-											<i class="fa-lock"></i>
-											
-											<span class="line">
-												<strong>Privacy settings have been changed</strong>
-											</span>
-											
-											<span class="line small time">
-												3 hours ago
-											</span>
-										</a>
-									</li>
-									
-									<li class="notification-primary">
-										<a href="#">
-											<i class="fa-thumbs-up"></i>
-											
-											<span class="line">
-												<strong>Someone special liked this</strong>
-											</span>
-											
-											<span class="line small time">
-												2 minutes ago
-											</span>
-										</a>
-									</li>
-									
-									<li class="notification-danger">
-										<a href="#">
-											<i class="fa-calendar"></i>
-											
-											<span class="line">
-												John cancelled the event
-											</span>
-											
-											<span class="line small time">
-												9 hours ago
-											</span>
-										</a>
-									</li>
-									
-									<li class="notification-info">
-										<a href="#">
-											<i class="fa-database"></i>
-											
-											<span class="line">
-												The server is status is stable
-											</span>
-											
-											<span class="line small time">
-												yesterday at 10:30am
-											</span>
-										</a>
-									</li>
-									
-									<li class="notification-warning">
-										<a href="#">
-											<i class="fa-envelope-o"></i>
-											
-											<span class="line">
-												New comments waiting approval
-											</span>
-											
-											<span class="line small time">
-												last week
-											</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-							
-							<li class="external">
-								<a href="#">
-									<span>View all notifications</span>
-									<i class="fa-link-ext"></i>
-								</a>
-							</li>
-						</ul>
-					</li>
-					
-				</ul>
-				
-				
-				<!-- Right links for user info navbar -->
-				<ul class="user-info-menu right-links list-inline list-unstyled">
-					
-					<!-- 搜索框 -->
-					<li class="search-form always-visible"><!-- You can add "always-visible" to show make the search input visible -->
-						
-						<form method="get" action="#">
-							<input type="text" name="s" class="form-control search-field" placeholder="Type to search..." />
-							
-							<button type="submit" class="btn btn-link">
-								<i class="linecons-search"></i>
-							</button>
-						</form>
-						
-					</li>
-					
-					<!-- 用户头像 -->
-					<li class="dropdown user-profile">
-						<a href="#" data-toggle="dropdown">
-							<img src="assets/images/user-4.png" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
-							<span>
-								邢卫
-								<i class="fa-angle-down"></i>
-							</span>
-						</a>
-						
-						<ul class="dropdown-menu user-profile-menu list-unstyled">
-							<li>
-								<a href="message-write.html">
-									<i class="fa-edit"></i>
-									新的消息
-								</a>
-							</li>
-							<li>
-								<a href="password-question-set.html">
-									<i class="fa-wrench"></i>
-									密保设置
-								</a>
-							</li>
-							<li>
-								<a href="profile-main.html">
-									<i class="fa-user"></i>
-									个人资料
-								</a>
-							</li>
-							<li class="#">
-								<a href="password-change.html">
-									<i class="fa-unlock"></i>
-									修改密码
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-wrench"></i>
-									帮助
-								</a>
-							</li>
-							<li class="#">
-								<a href="extra-lockscreen.html">
-									<i class="fa-lock"></i>
-									登出
-								</a>
-							</li>
-						</ul>
-					</li>
-					
-					<!-- 聊天栏 -->
-					<li>
-						<a href="#" data-toggle="chat">
-							<i class="fa-comments-o"></i>
-						</a>
-					</li>
-					
-				</ul>
-				
-			</nav>
+			<?php require("userinfonavbar.php");?>
 			
 			<!-- 主内容 -->
 			<div class="page-title">
@@ -750,7 +268,7 @@
 								<label class="col-sm-2 control-label" for="field-2">姓名</label>
 								
 								<div class="col-sm-5">
-									邢卫
+									<?php echo $_SESSION['name'];?>
 								</div>
 							</div>
 							
@@ -760,7 +278,7 @@
 								<label class="col-sm-2 control-label" for="field-2">院系</label>
 								
 								<div class="col-sm-5">
-									计算机学院
+									<?php echo $_SESSION['department'];?>
 								</div>
 							</div>
 							
@@ -770,7 +288,7 @@
 								<label class="col-sm-2 control-label" for="field-3">职称</label>
 								
 								<div class="col-sm-5">
-									教授
+									<?php echo $_SESSION['title'];?>
 								</div>
 							</div>
 
@@ -780,7 +298,7 @@
 								<label class="col-sm-2 control-label" for="field-4">联系电话</label>
 								
 								<div class="col-sm-5">
-									188XXXX1234
+									<?php echo $_SESSION['tel'];?>
 								</div>
 							</div>
 
@@ -790,7 +308,7 @@
 								<label class="col-sm-2 control-label" for="field-5">电子邮件</label>
 								
 								<div class="col-sm-5">
-									XXXXX@zju.edu.cn
+									<?php echo $_SESSION['email'];?>
 								</div>
 							</div>
 
@@ -800,10 +318,7 @@
 								<label class="col-sm-2 control-label" for="field-6">自我介绍</label>
 								
 								<div class="col-sm-5">
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
+									<?php echo "<p>".$_SESSION['intro']."</p>";?>
 									
 								</div>
 							</div>
@@ -814,11 +329,7 @@
 								<label class="col-sm-2 control-label" for="field-7">科研成果</label>
 								
 								<div class="col-sm-5">
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
+									<?php echo "<p>".$_SESSION['paper_intro']."</p>";?>
 								</div>
 							</div>
 
@@ -828,7 +339,8 @@
 								<label class="col-sm-2 control-label" for="field-7"></label>
 								
 								<div class="col-sm-5">
-									<a href="profile-edit.html"><button class="btn btn-secondary btn-single">编辑</button></a>
+									<a href=""><button class="btn btn-secondary btn-single" id="edit">编辑</button></a>
+									
 								</div>
 							</div>
 							</form>
@@ -842,30 +354,7 @@
 			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
 			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
 			<!-- Or class "fixed" to  always fix the footer to the end of page -->
-			<footer class="main-footer sticky footer-type-1">
-				
-				<div class="footer-inner">
-				
-					<!-- Add your copyright text here -->
-					<div class="footer-text">
-						&copy; 2015 
-						<strong>软件需求&amp;项目管理 G10</strong> 
-						| MailTo：450956162@qq.com
-					</div>
-					
-					
-					<!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
-					<div class="go-up">
-					
-						<a href="#" rel="go-top">Top
-							<i class="fa-angle-up"></i>
-						</a>
-						
-					</div>
-					
-				</div>
-				
-			</footer>
+			<?php require("footer.php");?>
 		</div>
 		
 			
@@ -1029,3 +518,10 @@
 
 </body>
 </html>
+<?php
+
+}
+	else{
+		header("Location:"."../TS/login.php");
+	}
+?>
