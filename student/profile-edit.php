@@ -212,7 +212,7 @@
 							</a>
 							<ul>
 								<li>
-									<a href="homework-list.html">
+									<a href="homework-list.php">
 										<span class="title">作业列表</span>
 									</a>
 								</li>

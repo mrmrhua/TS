@@ -1,7 +1,27 @@
 <?php
+	session_start();
 	if(isset($_GET['cid']) && isset($_POST['submit'])){
+		require(dirname(dirname(__FILE__))."/dbconfig.php");
+		$db = new mysqli($db_host,$db_username,$db_password,$db_database);
+		$sql = "SELECT  `group_id` FROM  `groups`  where cid=".$_GET['cid']." and group_name='".$_POST['group_name']."' and enter_passwd='".$_POST['group_password']."';";
+		$result = $db->query($sql);
 
+		if($result->num_rows==0){  //not found
+			echo $result->num_rows;
+		}
+		else{ //  加入
+			$group_row = $result->fetch_assoc();
+			$sql = "INSERT INTO `student_group`( `account`, `group_id`) VALUES('".$_SESSION['USERNAME']."',".$group_row['group_id'].");";
+			$db->query($sql);
+			header("Location:"."/student/group-info"."?".$_SERVER['QUERY_STRING']);
+			//header("Location:http://www.baidu.com");
+		}
 	}
+	else if(isset($_GET['cid'])==false){
+		header("Location:"."/student/index.php");
+	}
+	else{
+		//echo "hah";
 ?>
 <!DOCTYPE html>
 <html lang="zh">
@@ -12,7 +32,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="description" content="Xenon Boostrap Admin Panel" />
 	<meta name="author" content="" />
-	r
 	<title>浙江大学软件工程课程网站</title>
 
 	<link rel="stylesheet" href="assets/css/ffonts.css">
@@ -309,7 +328,7 @@
 						</a>
 						<ul>
 							<li>
-								<a href="homework-list.html">
+								<a href="homework-list.php">
 									<span class="title">作业列表</span>
 								</a>
 							</li>
@@ -720,7 +739,6 @@
 				
 				<div class="title-env">
 					<h1 class="title">加入小组</h1>
-					<p class="description">当前学生在当前课程班级加入已有的小组</p>
 				</div>
 
 			</div>
@@ -746,7 +764,7 @@
 									<label class="col-sm-2 control-label" for="field-1">小组名字</label>
 									
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="field-1" placeholder="Placeholder">
+										<input type="text" class="form-control" name="group_name" id="field-1" placeholder="Placeholder">
 									</div>
 								</div>
 
@@ -757,7 +775,7 @@
 									<label class="col-sm-2 control-label" for="field-3">小组口令</label>
 									
 									<div class="col-sm-2">
-										<input type="text" class="form-control" id="field-3" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-3" name="group_password" placeholder="Placeholder">
 									</div>
 								</div>
 
@@ -971,3 +989,8 @@
 
 </body>
 </html>
+
+
+<?php
+}
+?>

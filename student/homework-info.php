@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -32,117 +35,7 @@
 </head>
 <body class="page-body">
 
-	<div class="settings-pane">
-			
-		<a href="#" data-toggle="settings-pane" data-animate="true">
-			&times;
-		</a>
-		
-		<div class="settings-pane-inner">
-			
-			<div class="row">
-				
-				<div class="col-md-4">
-					
-					<div class="user-info">
-						
-						<div class="user-image">
-							<a href="profile-main.html">
-								<img src="assets/images/user-2.png" class="img-responsive img-circle" />
-							</a>
-						</div>
-						
-						<div class="user-details">
-							
-							<h3>
-								<a href="profile-main.html">王尼玛</a>
-								
-								<!-- Available statuses: is-online, is-idle, is-busy and is-offline -->
-								<span class="user-status is-online"></span>
-							</h3>
-							
-							<p class="user-title">313010XXXX | 大三 | 软件工程</p>
-							
-							<div class="user-links">
-								<a href="profile-edit.php" class="btn btn-primary">编辑资料</a>
-								<a href="password-change.html" class="btn btn-success">修改密码</a>
-							</div>
-							
-						</div>
-						
-					</div>
-					
-				</div>
-				
-				<div class="col-md-8 link-blocks-env">
-					
-					<div class="links-block left-sep">
-						<h4>
-							<span>通知</span>
-						</h4>
-						
-						<ul class="list-unstyled">
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk1" />
-								<label for="sp-chk1">用户消息</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk2" />
-								<label for="sp-chk2">作业事件</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk3" />
-								<label for="sp-chk3">课程通知</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk4" />
-								<label for="sp-chk4">站内通知</label>
-							</li>
-						</ul>
-					</div>
-					
-					<div class="links-block left-sep">
-						<h4>
-							<a href="#">
-								<span>Help Desk</span>
-							</a>
-						</h4>
-						
-						<ul class="list-unstyled">
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Support Center
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Submit a Ticket
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Domains Protocol
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Terms of Service
-								</a>
-							</li>
-						</ul>
-					</div>
-					
-				</div>
-				
-			</div>
-		
-		</div>
-		
-	</div>
+	<?php require("setting-pane.php"); ?>
 <!-- 	<div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
  -->	
 	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
@@ -150,227 +43,7 @@
 		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
 		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
 		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
-		<div class="sidebar-menu toggle-others fixed">
-			
-			<div class="sidebar-menu-inner">	
-				
-				<header class="logo-env">
-					
-					<!-- logo -->
-					<div class="logo">
-						<a href="index.php" class="logo-expanded">
-							<img src="assets/images/logo@2x.png" width="80" alt="" />
-						</a>
-						
-						<a href="index.php" class="logo-collapsed">
-							<img src="assets/images/logo-collapsed@2x.png" width="40" alt="" />
-						</a>
-					</div>
-					
-					<!-- This will toggle the mobile menu and will be visible only on mobile devices -->
-					<div class="mobile-menu-toggle visible-xs">
-						<a href="#" data-toggle="user-info-menu">
-							<i class="fa-bell-o"></i>
-							<span class="badge badge-success">7</span>
-						</a>
-						
-						<a href="#" data-toggle="mobile-menu">
-							<i class="fa-bars"></i>
-						</a>
-					</div>
-					
-					<!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
-					<div class="settings-icon">
-						<a href="#" data-toggle="settings-pane" data-animate="true">
-							<i class="linecons-cog"></i>
-						</a>
-					</div>
-					
-								
-				</header>
-						
-				
-						
-				<ul id="main-menu" class="main-menu">
-					<!-- add class "multiple-expanded" to allow multiple submenus to open -->
-					<!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-
-					<!-- 课程 -->
-					<li>
-						<a href="#">
-							<i class="linecons-cog"></i>
-							<span class="title">课程</span>
-						</a>
-						<ul>
-							<li>
-								<a href="course-list.php">
-									<span class="title">课程列表</span>
-								</a>
-							</li>
-							<li>
-								<a href="course-info.php">
-									<span class="title">课程介绍</span>
-								</a>
-							</li>
-							<li>
-								<a href="course-teacher-info.php">
-									<span class="title">教师介绍</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 小组 -->
-					<li>
-						<a href="#">
-							<i class="linecons-desktop"></i>
-							<span class="title">小组</span>
-						</a>
-						<ul>
-							<li>
-								<a href="#">
-									<span class="title">软件需求分析与设计</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-join.php">
-											<span class="title">加入小组</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">
-									<span class="title">项目管理与案例分析</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-join.php">
-											<span class="title">加入小组</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">
-									<span class="title">软件质量保证与测试</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-join.php">
-											<span class="title">加入小组</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 作业 -->
-					<li class="opened active">
-						<a href="#">
-							<i class="linecons-note"></i>
-							<span class="title">作业</span>
-						</a>
-						<ul>
-							<li class="active">
-								<a href="homework-list.html">
-									<span class="title">作业列表</span>
-								</a>
-							</li>
-							<li>
-								<a href="homework-info.html">
-									<span class="title">作业详细</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 课程资料 -->
-					<li>
-						<a href="#">
-							<i class="linecons-star"></i>
-							<span class="title">资料</span>
-						</a>
-						<ul>
-							<li>
-								<a href="file-list.html">
-									<span class="title">资料列表</span>
-								</a>
-							</li>
-							<li>
-								<a href="file-add.html">
-									<span class="title">新的资料</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 消息 -->
-					<li>
-						<a href="#">
-							<i class="linecons-mail"></i>
-							<span class="title">消息</span>
-							<span class="label label-success pull-right">5</span>
-						</a>
-						<ul>
-							<li>
-								<a href="message-received-list.html">
-									<span class="title">收信箱</span>
-								</a>
-							</li>
-							<li>
-								<a href="message-sent-list.html">
-									<span class="title">已发送</span>
-								</a>
-							</li>
-							<li>
-								<a href="message-view.html">
-									<span class="title">查看消息</span>
-								</a>
-							</li>
-							<li>
-								<a href="message-write.html">
-									<span class="title">写消息</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-						
-			</div>
-			
-		</div>
+		<?php require("sidebar.php"); ?>
 		
 		<div class="main-content">
 					
@@ -711,31 +384,68 @@
 			</nav>
 
 			<!-- 主内容-zhuneirong -->
-			<div class="page-title">
-				<div class="title-env">
-					<h1 class="title">作业列表</h1>
-					<p class="description">当前学生的所有作业列表</p>
-				</div>
-				
-				<div class="breadcrumb-env">
-					<ol class="breadcrumb bc-1">
-						<li>
-							<a href="index.php"><i class="fa-home"></i>主页</a>
-						</li>
-						<li>
-							<a href="#">作业</a>
-						</li>
-						<li>
-							<strong>作业列表</strong>
-						</li>
-					</ol>
+			<?php
+				require(dirname(dirname(__FILE__))."/dbconfig.php");
+				$db = new mysqli($db_host,$db_username,$db_password,$db_database);
+				$sql = "select subject , requirement, ddl from homework where hw_id =".$_GET['hw_id'].";";
+				$hw_result =$db->query($sql);
+				$hw_row = $hw_result->fetch_assoc();
+			?>
+			<div class="row">
+				<div class="col-sm-12">
+					
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">作业信息</h3>
+							<div class="panel-options">
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+							</div>
+						</div>
+						<div class="panel-body">
+							<form role="form" class="form-horizontal">							
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="field-2">作业名称</label>
+								
+								<div class="col-sm-5">
+									<?php echo $hw_row['subject']; ?>
+								</div>
+							</div>
+							
+							<div class="form-group-separator"></div>
+
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="field-2">作业要求</label>
+								
+								<div class="col-sm-5">
+									<p><?php echo $hw_row['requirement']; ?></p>
+
+								</div>
+							</div>
+							
+							<div class="form-group-separator"></div>
+
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="field-3">截止日期</label>
+								
+								<div class="col-sm-5">
+									<?php echo $hw_row['ddl']; ?>
+								</div>
+							</div>
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
-			
+
 			<div class="panel panel-default">
+			
 				<div class="panel-heading">
-					<h3 class="panel-title">作业列表</h3>
-					
+					<h3 class="panel-title">
+						上传作业 
+					</h3>
 					<div class="panel-options">
 						<a href="#" data-toggle="panel">
 							<span class="collapse-icon">&ndash;</span>
@@ -743,83 +453,142 @@
 						</a>
 					</div>
 				</div>
+				
 				<div class="panel-body">
 					
 					<script type="text/javascript">
-					jQuery(document).ready(function($)
-					{
-						$("#example-1").dataTable({
-							aLengthMenu: [
-								[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]
-							]
+						jQuery(document).ready(function($)
+						{
+							var i = 1,
+								$example_dropzone_filetable = $("#example-dropzone-filetable"),
+								example_dropzone = $("#advancedDropzone").dropzone({
+								url: 'data/upload-file.php',
+								
+								// Events
+								addedfile: function(file)
+								{
+									if(i == 1)
+									{
+										$example_dropzone_filetable.find('tbody').html('');
+									}
+									
+									var size = parseInt(file.size/1024, 10);
+									size = size < 1024 ? (size + " KB") : (parseInt(size/1024, 10) + " MB");
+									
+									var	$el = $('<tr>\
+													<td class="text-center">'+(i++)+'</td>\
+													<td>'+file.name+'</td>\
+													<td><div class="progress progress-striped"><div class="progress-bar progress-bar-warning"></div></div></td>\
+													<td>'+size+'</td>\
+													<td>Uploading...</td>\
+												</tr>');
+									
+									$example_dropzone_filetable.find('tbody').append($el);
+									file.fileEntryTd = $el;
+									file.progressBar = $el.find('.progress-bar');
+								},
+								
+								uploadprogress: function(file, progress, bytesSent)
+								{
+									file.progressBar.width(progress + '%');
+								},
+								
+								success: function(file)
+								{
+									file.fileEntryTd.find('td:last').html('<span class="text-success">Uploaded</span>');
+									file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-success');
+								},
+								
+								error: function(file)
+								{
+									file.fileEntryTd.find('td:last').html('<span class="text-danger">Failed</span>');
+									file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-red');
+								}
+							});
+							
+							$("#advancedDropzone").css({
+								minHeight: 200
+							});
+			
 						});
-					});
 					</script>
 					
-					<table id="example-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
-						<thead>
-							<tr>
-								<th>作业名称</th>
-								<th>作业范围</th>
-								<th>截止日期</th>
-								<th>个人作业/小组作业</th>
-								<th>作业状态</th>
-								<th>评分</th>
-								<th>操作</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>软件需求规格说明书</td>
-								<td>软件需求分析与设计</td>
-								<td>2015/12/8</td>
-								<td>小组作业</td>
-								<td><span class="label label-warning">未提交</span></td>
-								<td></td>
-								<td>
-									<a href="homework-info.html">详细</a>
-								</td>
-							</tr>
-							<tr>
-								<td>软件需求规格说明书</td>
-								<td>软件需求分析与设计</td>
-								<td>2015/12/8</td>
-								<td>小组作业</td>
-								<td><span class="label label-success">已上交</span></td>
-								<td>90</td>
-								<td>
-									<a href="homework-info.html">详细</a>
-								</td>
-							</tr>
-							<tr>
-								<td>软件需求规格说明书</td>
-								<td>软件需求分析与设计</td>
-								<td>2015/12/8</td>
-								<td>小组作业</td>
-								<td><span class="label label-danger">已过期</span></td>
-								<td>0</td>
-								<td>
-									<a href="homework-info.html">详细</a>
-								</td>
-							</tr>
-							<tr>
-								<td>软件需求规格说明书</td>
-								<td>软件需求分析与设计</td>
-								<td>2015/12/8</td>
-								<td>小组作业</td>
-								<td><span class="label label-success">已上交</span></td>
-								<td>95</td>
-								<td>
-									<a href="homework-info.html">详细</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+					<br />
+					<div class="row">
+						<div class="col-sm-3 text-center">
+						
+							<div id="advancedDropzone" class="droppable-area">
+								点击上传或拖拽至此
+							</div>
+							
+						</div>
+						<div class="col-sm-9">
+							
+							<table class="table table-bordered table-striped" id="example-dropzone-filetable">
+								<thead>
+									<tr>
+										<th width="1%" class="text-center">#</th>
+										<th width="50%">文件名称</th>
+										<th width="20%">上传进度</th>
+										<th>大小</th>
+										<th>状态</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="5">Files list will appear here</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+				</div>
+			
+			</div>
+			<?php
+				$sql = "select score,evaluation from student_homework where hw_id=".$_GET['hw_id'].";";
+				$score_res = $db->query($sql);
+				$row = $score_res->fetch_assoc();
+			?>
+			<div class="panel panel-default">
+			
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						作业评阅 
+					</h3>
+					<div class="panel-options">
+						<a href="#" data-toggle="panel">
+							<span class="collapse-icon">&ndash;</span>
+							<span class="expand-icon">+</span>
+						</a>
+					</div>
+				</div>
+				
+				<div class="panel-body">
+					<form role="form" class="form-horizontal">							
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="field-2">评分</label>
+						
+						<div class="col-sm-5">
+							<?php echo $row['score'];?>
+						</div>
+					</div>
+					
+					<div class="form-group-separator"></div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="field-2">评语</label>
+						
+						<div class="col-sm-5">
+							<p><?php echo $row['evaluation'] ?></p>
+						</div>
+					</div>
+					</form>
 				</div>
 			</div>
-			
 
-			
+
 
 			<!-- Main Footer -->
 			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
@@ -990,6 +759,10 @@
 
 	<!-- Imported styles on this page -->
 	<link rel="stylesheet" href="assets/js/datatables/dataTables.bootstrap.css">
+	<link rel="stylesheet" href="assets/js/dropzone/css/dropzone.css">
+	<link rel="stylesheet" href="assets/js/select2/select2.css">
+	<link rel="stylesheet" href="assets/js/select2/select2-bootstrap.css">
+	<link rel="stylesheet" href="assets/js/multiselect/css/multi-select.css">
 
 	<!-- Bottom Scripts -->
 	<script src="assets/js/bootstrap.min.js"></script>
@@ -999,16 +772,27 @@
 	<script src="assets/js/xenon-api.js"></script>
 	<script src="assets/js/xenon-toggles.js"></script>
 	<script src="assets/js/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="assets/js/moment.min.js"></script>
 
 
 	<!-- Imported scripts on this page -->
 	<script src="assets/js/datatables/dataTables.bootstrap.js"></script>
 	<script src="assets/js/datatables/yadcf/jquery.dataTables.yadcf.js"></script>
 	<script src="assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
-
+	<script src="assets/js/dropzone/dropzone.min.js"></script>
+	<script src="assets/js/daterangepicker/daterangepicker.js"></script>
+	<script src="assets/js/datepicker/bootstrap-datepicker.js"></script>
+	<script src="assets/js/timepicker/bootstrap-timepicker.min.js"></script>
+	<script src="assets/js/colorpicker/bootstrap-colorpicker.min.js"></script>
+	<script src="assets/js/select2/select2.min.js"></script>
+	<script src="assets/js/jquery-ui/jquery-ui.min.js"></script>
+	<script src="assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+	<script src="assets/js/tagsinput/bootstrap-tagsinput.min.js"></script>
+	<script src="assets/js/typeahead.bundle.js"></script>
+	<script src="assets/js/handlebars.min.js"></script>
+	<script src="assets/js/multiselect/js/jquery.multi-select.js"></script>
 
 	<!-- JavaScripts initializations and stuff -->
 	<script src="assets/js/xenon-custom.js"></script>
-
 </body>
 </html>

@@ -53,7 +53,7 @@ require("course.php");
             <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
 
             <!-- 课程 -->
-            <li class="opened active">
+            <li class="opened">
                 <a href="course-list.php">
                     <i class="linecons-cog"></i>
                     <span class="title">课程</span>
@@ -103,22 +103,10 @@ require("course.php");
 
             <!-- 作业 -->
             <li>
-                <a href="#">
+                <a href="homework-list.php">
                     <i class="linecons-note"></i>
                     <span class="title">作业</span>
                 </a>
-                <ul>
-                    <li>
-                        <a href="homework-list.html">
-                            <span class="title">作业列表</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="homework-info.html">
-                            <span class="title">作业详细</span>
-                        </a>
-                    </li>
-                </ul>
             </li>
 
             <!-- 课程资料 -->

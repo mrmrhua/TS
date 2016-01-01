@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -32,117 +35,7 @@
 </head>
 <body class="page-body">
 
-	<div class="settings-pane">
-			
-		<a href="#" data-toggle="settings-pane" data-animate="true">
-			&times;
-		</a>
-		
-		<div class="settings-pane-inner">
-			
-			<div class="row">
-				
-				<div class="col-md-4">
-					
-					<div class="user-info">
-						
-						<div class="user-image">
-							<a href="profile-main.html">
-								<img src="assets/images/user-2.png" class="img-responsive img-circle" />
-							</a>
-						</div>
-						
-						<div class="user-details">
-							
-							<h3>
-								<a href="profile-main.html">王尼玛</a>
-								
-								<!-- Available statuses: is-online, is-idle, is-busy and is-offline -->
-								<span class="user-status is-online"></span>
-							</h3>
-							
-							<p class="user-title">313010XXXX | 大三 | 软件工程</p>
-							
-							<div class="user-links">
-								<a href="profile-edit.php" class="btn btn-primary">编辑资料</a>
-								<a href="password-change.html" class="btn btn-success">修改密码</a>
-							</div>
-							
-						</div>
-						
-					</div>
-					
-				</div>
-				
-				<div class="col-md-8 link-blocks-env">
-					
-					<div class="links-block left-sep">
-						<h4>
-							<span>通知</span>
-						</h4>
-						
-						<ul class="list-unstyled">
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk1" />
-								<label for="sp-chk1">用户消息</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk2" />
-								<label for="sp-chk2">作业事件</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk3" />
-								<label for="sp-chk3">课程通知</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk4" />
-								<label for="sp-chk4">站内通知</label>
-							</li>
-						</ul>
-					</div>
-					
-					<div class="links-block left-sep">
-						<h4>
-							<a href="#">
-								<span>Help Desk</span>
-							</a>
-						</h4>
-						
-						<ul class="list-unstyled">
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Support Center
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Submit a Ticket
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Domains Protocol
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Terms of Service
-								</a>
-							</li>
-						</ul>
-					</div>
-					
-				</div>
-				
-			</div>
-		
-		</div>
-		
-	</div>
+	<?php require("setting-pane.php"); ?>
 <!-- 	<div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
  -->	
 	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
@@ -150,227 +43,7 @@
 		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
 		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
 		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
-		<div class="sidebar-menu toggle-others fixed">
-			
-			<div class="sidebar-menu-inner">	
-				
-				<header class="logo-env">
-					
-					<!-- logo -->
-					<div class="logo">
-						<a href="index.php" class="logo-expanded">
-							<img src="assets/images/logo@2x.png" width="80" alt="" />
-						</a>
-						
-						<a href="index.php" class="logo-collapsed">
-							<img src="assets/images/logo-collapsed@2x.png" width="40" alt="" />
-						</a>
-					</div>
-					
-					<!-- This will toggle the mobile menu and will be visible only on mobile devices -->
-					<div class="mobile-menu-toggle visible-xs">
-						<a href="#" data-toggle="user-info-menu">
-							<i class="fa-bell-o"></i>
-							<span class="badge badge-success">7</span>
-						</a>
-						
-						<a href="#" data-toggle="mobile-menu">
-							<i class="fa-bars"></i>
-						</a>
-					</div>
-					
-					<!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
-					<div class="settings-icon">
-						<a href="#" data-toggle="settings-pane" data-animate="true">
-							<i class="linecons-cog"></i>
-						</a>
-					</div>
-					
-								
-				</header>
-						
-				
-						
-				<ul id="main-menu" class="main-menu">
-					<!-- add class "multiple-expanded" to allow multiple submenus to open -->
-					<!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-
-					<!-- 课程 -->
-					<li>
-						<a href="#">
-							<i class="linecons-cog"></i>
-							<span class="title">课程</span>
-						</a>
-						<ul>
-							<li>
-								<a href="course-list.php">
-									<span class="title">课程列表</span>
-								</a>
-							</li>
-							<li>
-								<a href="course-info.php">
-									<span class="title">课程介绍</span>
-								</a>
-							</li>
-							<li>
-								<a href="course-teacher-info.php">
-									<span class="title">教师介绍</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 小组 -->
-					<li>
-						<a href="#">
-							<i class="linecons-desktop"></i>
-							<span class="title">小组</span>
-						</a>
-						<ul>
-							<li>
-								<a href="#">
-									<span class="title">软件需求分析与设计</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-join.php">
-											<span class="title">加入小组</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">
-									<span class="title">项目管理与案例分析</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-join.php">
-											<span class="title">加入小组</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">
-									<span class="title">软件质量保证与测试</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-join.php">
-											<span class="title">加入小组</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 作业 -->
-					<li>
-						<a href="#">
-							<i class="linecons-note"></i>
-							<span class="title">作业</span>
-						</a>
-						<ul>
-							<li>
-								<a href="homework-list.php">
-									<span class="title">作业列表</span>
-								</a>
-							</li>
-							<li>
-								<a href="homework-info.html">
-									<span class="title">作业详细</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 课程资料 -->
-					<li class="opened active">
-						<a href="#">
-							<i class="linecons-star"></i>
-							<span class="title">资料</span>
-						</a>
-						<ul>
-							<li class="active">
-								<a href="file-list.html">
-									<span class="title">资料列表</span>
-								</a>
-							</li>
-							<li>
-								<a href="file-add.html">
-									<span class="title">新的资料</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 消息 -->
-					<li>
-						<a href="#">
-							<i class="linecons-mail"></i>
-							<span class="title">消息</span>
-							<span class="label label-success pull-right">5</span>
-						</a>
-						<ul>
-							<li>
-								<a href="message-received-list.html">
-									<span class="title">收信箱</span>
-								</a>
-							</li>
-							<li>
-								<a href="message-sent-list.html">
-									<span class="title">已发送</span>
-								</a>
-							</li>
-							<li>
-								<a href="message-view.html">
-									<span class="title">查看消息</span>
-								</a>
-							</li>
-							<li>
-								<a href="message-write.html">
-									<span class="title">写消息</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-						
-			</div>
-			
-		</div>
+		<?php require("sidebar.php"); ?>
 		
 		<div class="main-content">
 					
@@ -713,8 +386,8 @@
 			<!-- 主内容-zhuneirong -->
 			<div class="page-title">
 				<div class="title-env">
-					<h1 class="title">资料列表</h1>
-					<p class="description">当前用户能下载的资料列表</p>
+					<h1 class="title">作业列表</h1>
+					<p class="description">当前学生的所有作业列表</p>
 				</div>
 				
 				<div class="breadcrumb-env">
@@ -723,10 +396,10 @@
 							<a href="index.php"><i class="fa-home"></i>主页</a>
 						</li>
 						<li>
-							<a href="#">资料</a>
+							<a href="#">作业</a>
 						</li>
 						<li>
-							<strong>资料列表</strong>
+							<strong>作业列表</strong>
 						</li>
 					</ol>
 				</div>
@@ -734,7 +407,7 @@
 			
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">资料列表</h3>
+					<h3 class="panel-title">作业列表</h3>
 					
 					<div class="panel-options">
 						<a href="#" data-toggle="panel">
@@ -759,44 +432,51 @@
 					<table id="example-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th>资料名称</th>
-								<th>共享范围</th>
-								<th>上传人</th>
-								<th>上传日期</th>
+								<th>作业名称</th>
+								<th>课程</th>
+								<th>截止日期</th>
+								<th>作业性质</th>
+								<th>作业状态</th>
+								<th>评分</th>
 								<th>操作</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td><a href="#"><strong>Software_Requirements-Third Edition.pdf</strong></a></td>
-								<td>软件需求分析与设计</td>
-								<td>邢卫</td>
-								<td>2015/9/1</td>
-								<td>
-									<a href="#">下载</a>
-									<a href="#">在线查看</a>
-								</td>
-							</tr>
-							<tr>
-								<td><a href="#"><strong>Software_Requirements-Third Edition.pdf</strong></a></td>
-								<td>软件需求分析与设计</td>
-								<td>邢卫</td>
-								<td>2015/9/1</td>
-								<td>
-									<a href="#">下载</a>
-									<a href="#">在线查看</a>
-								</td>
-							</tr>
-							<tr>
-								<td><a href="#"><strong>Software_Requirements-Third Edition.pdf</strong></a></td>
-								<td>软件需求分析与设计</td>
-								<td>邢卫</td>
-								<td>2015/9/1</td>
-								<td>
-									<a href="#">下载</a>
-									<a href="#">在线查看</a>
-								</td>
-							</tr>
+						<?php
+							require(dirname(dirname(__FILE__))."/dbconfig.php");
+							$db = new mysqli($db_host,$db_username,$db_password,$db_database);
+							$sql = "select hw_id,class_id,subject,ddl,hw_type,course_name,handin_status,score_status from (homework natural join (select hw_id,handin_status,score_status,score from student_homework where student_account ='".$_SESSION['USERNAME']."') temp);";
+
+							$hw_result =$db->query($sql);
+							while($hw_row = $hw_result->fetch_assoc()){
+								echo "<tr>
+								<td>".$hw_row['subject']."</td>
+								<td>".$hw_row['course_name']."</td>
+								<td>".$hw_row['ddl']."</td>";
+								if($hw_row['hw_type'] == 0){  //个人作业
+									echo "<td>个人作业</td>";
+								}
+								else{
+									echo "<td>小组作业</td>";
+								}
+								if($hw_row['handin_status'] == 0){   //作业未提交
+									echo "<td><span class='label label-warning'>未提交</span></td>";
+								}
+								else{
+									echo "<td><span class='label label-warning'>已提交</span></td>";
+								}
+								if($hw_row['score_status'] == 0) {//未批
+									echo "<td>未批改</td>";
+								}
+								else{
+									echo "<td>".$hw_row['score']."</td>";
+								}
+
+								echo "<td><a href='homework-info.php?hw_id=".$hw_row['hw_id']."'>详细</a></td>";
+								echo "</tr>";
+							}
+						?>
+
 						</tbody>
 					</table>
 				</div>

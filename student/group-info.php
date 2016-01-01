@@ -2,9 +2,9 @@
 	session_start();
 	require(dirname(dirname(__FILE__))."/dbconfig.php");
 	$db = new mysqli($db_host,$db_username,$db_password,$db_database);
-	$sql = "select group_name from group where leader_account='".$_SESSION['USERNAME']."' and cid=";
-	//$group_result =$db->query($sql);
-	//$group_row = $group_result->fetch_assoc();
+	$sql ="select group_name,group_id from (groups NATURAL  JOIN student_group) where account='".$_SESSION['USERNAME']."' and cid=".$_GET['cid'].";";
+	$group_result =$db->query($sql);
+	$group_row = $group_result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="zh">
@@ -109,11 +109,12 @@
 							<span class="title">小组</span>
 						</a>
 						<ul>
-							<?php 
+							<?php
 								require("course.php");
 							echo $_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING'];
 								while($course_row = $course_result->fetch_assoc()) {
 									if($course_row['cid']==$_GET['cid']){     //选中当前行
+										$this_course = $course_row['course_name'];
 										echo "<li class='opened active'>
 												<a href='#'>
 									<span class='title'>".$course_row['course_name']."</span>
@@ -155,7 +156,7 @@
 						</a>
 						<ul>
 							<li>
-								<a href="homework-list.html">
+								<a href="homework-list.php">
 									<span class="title">作业列表</span>
 								</a>
 							</li>
@@ -564,181 +565,74 @@
 			<div class="page-title">
 				
 				<div class="title-env">
-					<h1 class="title">软件需求分析与设计 </h1>
-					<p class="description">王尼玛和他的小伙伴们</p>
+					<h1 class="title"><?php echo $this_course; ?></h1>
+					<p class="description"><?php echo $group_row['group_name']; ?>  小组</p>
 				</div>
 
 			</div>
 
 			<section class="profile-env">
-				
+
 				<div class="row">
 					<!-- 小组成员信息 -->
 					<div class="col-sm-3">
 				
 						<div class="panel-group" id="accordion-test-2">
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseOne-2">
-											王尼玛
-										</a>
+							<?php
+							$sql = "select name,major,account,tel,email,grade from student NATURAL  join student_group where group_id =". $group_row['group_id'];
+							$result =$db->query($sql);
+							$i = 0;
+							while($row = $result->fetch_assoc()) {
+								$i++;
+								echo "<div class='panel panel-default'>
+								<div class='panel-heading'>
+									<h4 class='panel-title'>
+										<a data-toggle='collapse' data-parent='#accordion-test-2' href='#collapse".$i."' class='collapsed'>" . $row['name'] . "</a>
 									</h4>
 								</div>
-								<div id="collapseOne-2" class="panel-collapse collapse in">
-									<div class="panel-body">
-										<div class="user-info-sidebar">
-											<a href="#" class="user-img">
-												<img src="assets/images/user-4.png" alt="user-img" class="img-cirlce img-responsive img-thumbnail" />
+								<div id='collapse".$i."' class='panel-collapse collapse'>
+									<div class='panel-body'>
+										<div class='user-info-sidebar'>
+											<a href='#' class='user-img'>
+												<img src='assets/images/user-4.png' alt='user-img' class='img-cirlce img-responsive img-thumbnail' />
 											</a>
-											<a href="#" class="user-name">
-												王尼玛
-												<span class="user-status is-online"></span>
+											<a href='#' class='user-name'>" . $row['name'] . "<span class='user-status is-online'></span>
 											</a>
-											<span class="user-title">
-												<strong>313010XXXX</strong>
+											<span class='user-title'>
+												<strong>" . $row['account'] . "</strong>
 											</span>
 											
 											<hr />
 											
-											<ul class="list-unstyled user-info-list">
+											<ul class='list-unstyled user-info-list'>
 												<li>
-													<i class="fa-home"></i>
-													大三 - 软件工程
+													<i class='fa-home'></i>
+								" . $row['grade'] . " - " . $row['major'] . "
 												</li>
 												<li>
-													<i class="linecons-mobile"></i>
-													188XXXX1234
-												</li>
+													<i class='linecons-mobile'></i>
+								" . $row['tel'] . "
+								</li>
 												<li>
-													<i class="linecons-mail"></i>
-													XXXXX@zju.edu.cn
-												</li>
-												<li>
-													<i class="fa-graduation-cap"></i>
-													浙江大学
-												</li>
+													<i class='linecons-mail'></i>
+								" . $row['email'] . "
+								</li>
+
 											</ul>	
 												
-											<a href="message-write.html">
-												<button type="button" class="btn btn-success btn-block text-left">
-													写信
-													<i class="linecons-mail pull-right"></i>
+											<a href='message-write.html'>
+												<button type='button' class='btn btn-success btn-block text-left'>
+								写信
+													<i class='linecons-mail pull-right'></i>
 												</button>
 											</a>
 										</div>
 									</div>
 								</div>
-							</div>
-							
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseTwo-2" class="collapsed">
-											张尼玛
-										</a>
-									</h4>
-								</div>
-								<div id="collapseTwo-2" class="panel-collapse collapse">
-									<div class="panel-body">
-										<div class="user-info-sidebar">
-											<a href="#" class="user-img">
-												<img src="assets/images/user-4.png" alt="user-img" class="img-cirlce img-responsive img-thumbnail" />
-											</a>
-											<a href="#" class="user-name">
-												张尼玛
-												<span class="user-status is-online"></span>
-											</a>
-											<span class="user-title">
-												<strong>313010XXXX</strong>
-											</span>
-											
-											<hr />
-											
-											<ul class="list-unstyled user-info-list">
-												<li>
-													<i class="fa-home"></i>
-													大三 - 软件工程
-												</li>
-												<li>
-													<i class="linecons-mobile"></i>
-													188XXXX1234
-												</li>
-												<li>
-													<i class="linecons-mail"></i>
-													XXXXX@zju.edu.cn
-												</li>
-												<li>
-													<i class="fa-graduation-cap"></i>
-													浙江大学
-												</li>
-											</ul>	
-												
-											<a href="message-write.html">
-												<button type="button" class="btn btn-success btn-block text-left">
-													写信
-													<i class="linecons-mail pull-right"></i>
-												</button>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseThree-2" class="collapsed">
-											董尼玛
-										</a>
-									</h4>
-								</div>
-								<div id="collapseThree-2" class="panel-collapse collapse">
-									<div class="panel-body">
-										<div class="user-info-sidebar">
-											<a href="#" class="user-img">
-												<img src="assets/images/user-4.png" alt="user-img" class="img-cirlce img-responsive img-thumbnail" />
-											</a>
-											<a href="#" class="user-name">
-												董尼玛
-												<span class="user-status is-online"></span>
-											</a>
-											<span class="user-title">
-												<strong>313010XXXX</strong>
-											</span>
-											
-											<hr />
-											
-											<ul class="list-unstyled user-info-list">
-												<li>
-													<i class="fa-home"></i>
-													大三 - 软件工程
-												</li>
-												<li>
-													<i class="linecons-mobile"></i>
-													188XXXX1234
-												</li>
-												<li>
-													<i class="linecons-mail"></i>
-													XXXXX@zju.edu.cn
-												</li>
-												<li>
-													<i class="fa-graduation-cap"></i>
-													浙江大学
-												</li>
-											</ul>	
-												
-											<a href="message-write.html">
-												<button type="button" class="btn btn-success btn-block text-left">
-													写信
-													<i class="linecons-mail pull-right"></i>
-												</button>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
+							</div>";
+							}
+							?>
+
 						</div>
 					</div>
 					<!-- 小组讨论内容 -->
