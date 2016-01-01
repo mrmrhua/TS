@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6a398b8-d76a-496a-9c82-cb35d9d3210a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/student/up-hw.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/student/file-add.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/student/file-list.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/group-info.php" afterPath="$PROJECT_DIR$/student/group-info.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/group-join.php" afterPath="$PROJECT_DIR$/student/group-join.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/homework-info.php" afterPath="$PROJECT_DIR$/student/homework-info.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/homework-list.php" afterPath="$PROJECT_DIR$/student/homework-list.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/index.html" afterPath="$PROJECT_DIR$/student/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/main/index.html" afterPath="$PROJECT_DIR$/student/main/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/message-received-list.html" afterPath="$PROJECT_DIR$/student/message-received-list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/message-sent-list.html" afterPath="$PROJECT_DIR$/student/message-sent-list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/message-view.html" afterPath="$PROJECT_DIR$/student/message-view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/message-write.html" afterPath="$PROJECT_DIR$/student/message-write.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/password-change.html" afterPath="$PROJECT_DIR$/student/password-change.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/password-question-set.html" afterPath="$PROJECT_DIR$/student/password-question-set.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/profile-edit.php" afterPath="$PROJECT_DIR$/student/profile-edit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/profile-main.html" afterPath="$PROJECT_DIR$/student/profile-main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/student/sidebar.php" afterPath="$PROJECT_DIR$/student/sidebar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/teacher/index.php" afterPath="$PROJECT_DIR$/teacher/index.php" />
     </list>
     <ignored path="TS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -242,15 +226,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="file-add.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="file-add.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/student/file-add.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27725857">
+            <state vertical-scroll-proportion="-3.9264705">
               <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
               <folding>
                 <marker date="1451663075812" expanded="true" signature="17306:17345" placeholder="..." />
                 <marker date="1451663075812" expanded="true" signature="17306:17605" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/teacher/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-24.616081">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -272,7 +266,6 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/dbconfig.php" />
         <option value="$PROJECT_DIR$/student/login.php" />
-        <option value="$PROJECT_DIR$/teacher/index.php" />
         <option value="$PROJECT_DIR$/student/profile-edit.html" />
         <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/student/assets/js/ckeditor/README.md" />
@@ -296,6 +289,7 @@
         <option value="$PROJECT_DIR$/student/homework-info.php" />
         <option value="$PROJECT_DIR$/student/file-add.html" />
         <option value="$PROJECT_DIR$/student/file-add.php" />
+        <option value="$PROJECT_DIR$/teacher/index.php" />
       </list>
     </option>
   </component>
@@ -384,7 +378,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="student" />
+              <option name="myItemId" value="teacher" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -731,13 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/teacher/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="52.469696">
-          <caret line="936" column="2" selection-start-line="936" selection-start-column="2" selection-end-line="936" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/teacher/profile-edit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5084746">
@@ -1077,12 +1064,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/student/file-add.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27725857">
+        <state vertical-scroll-proportion="-3.9264705">
           <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
           <folding>
             <marker date="1451663075812" expanded="true" signature="17306:17345" placeholder="..." />
             <marker date="1451663075812" expanded="true" signature="17306:17605" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-24.616081">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

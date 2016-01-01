@@ -4,7 +4,10 @@
 	require("teacher-info.php");
 	if(isset($_SESSION['IDENTITY']) && $_SESSION['IDENTITY']==1){  //已经登录
 
+<<<<<<< HEAD
 ?>
+=======
+>>>>>>> origin/master
 <!DOCTYPE html>
 <html lang="zh">
 <head>
