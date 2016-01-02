@@ -46,7 +46,7 @@ require("student_info.php");
 
                         <div class="user-links">
                             <a href="profile-edit.php" class="btn btn-primary">编辑资料</a>
-                            <a href="password-change.html" class="btn btn-success">修改密码</a>
+                            <a href="password-change.php" class="btn btn-success">修改密码</a>
                         </div>
 
                     </div>

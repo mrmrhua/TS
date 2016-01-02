@@ -352,7 +352,7 @@ session_start();
 								</a>
 							</li>
 							<li class="#">
-								<a href="password-change.html">
+								<a href="password-change.php">
 									<i class="fa-unlock"></i>
 									修改密码
 								</a>
@@ -405,7 +405,7 @@ session_start();
 								<?php
 									require("course.php");
 									while($course_row = $course_result->fetch_assoc()){
-										echo "<option value='".$course_row['cid']."'>".$course_row['course_name']."</option>";
+										echo "<option value='".$course_row['course_name']."'>".$course_row['course_name']."</option>";
 									}
 								?>
 

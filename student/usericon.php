@@ -39,7 +39,7 @@
         </a>
     </li>
     <li class="#">
-        <a href="password-change.html">
+        <a href="password-change.php">
             <i class="fa-unlock"></i>
             修改密码
         </a>

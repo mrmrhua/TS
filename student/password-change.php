@@ -1,3 +1,34 @@
+<?php session_start();
+
+	if(isset($_POST['sub'])){
+		require(dirname(dirname(__FILE__))."/dbconfig.php");
+		$db = new mysqli($db_host,$db_username,$db_password,$db_database);
+		$sql = "select passwd from student where account='".$_SESSION['USERNAME']."'";
+		$result =$db->query($sql);
+		$row = $result->fetch_assoc();
+		echo $row['passwd'];
+		echo $_POST['old'];
+		if($row['passwd']==$_POST['old']){
+			if($_POST['new'] == $_POST['again']){
+					$sql = "update student set passwd ='".$_POST['new']."'";
+					$db->query($sql);
+					header("Location:"."/student/index.php");
+			}
+			else{   //两次输入的密码不一致
+				$error = 1;
+				header("Location:"."/student/password-change.php?error=".$error);
+				//header("Location:http://www.baidu.com");
+			}
+		}
+		else{  //旧密码错误
+			$error = 2;
+			header("Location:"."/student/password-change.php?error=".$error);
+			//header("Location:http://www.qq.com");
+		}
+	}
+	else{
+
+?>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -32,117 +63,7 @@
 </head>
 <body class="page-body">
 
-	<div class="settings-pane">
-			
-		<a href="#" data-toggle="settings-pane" data-animate="true">
-			&times;
-		</a>
-		
-		<div class="settings-pane-inner">
-			
-			<div class="row">
-				
-				<div class="col-md-4">
-					
-					<div class="user-info">
-						
-						<div class="user-image">
-							<a href="profile-main.html">
-								<img src="assets/images/user-2.png" class="img-responsive img-circle" />
-							</a>
-						</div>
-						
-						<div class="user-details">
-							
-							<h3>
-								<a href="profile-main.html">王尼玛</a>
-								
-								<!-- Available statuses: is-online, is-idle, is-busy and is-offline -->
-								<span class="user-status is-online"></span>
-							</h3>
-							
-							<p class="user-title">313010XXXX | 大三 | 软件工程</p>
-							
-							<div class="user-links">
-								<a href="profile-edit.php" class="btn btn-primary">编辑资料</a>
-								<a href="password-change.html" class="btn btn-success">修改密码</a>
-							</div>
-							
-						</div>
-						
-					</div>
-					
-				</div>
-				
-				<div class="col-md-8 link-blocks-env">
-					
-					<div class="links-block left-sep">
-						<h4>
-							<span>通知</span>
-						</h4>
-						
-						<ul class="list-unstyled">
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk1" />
-								<label for="sp-chk1">用户消息</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk2" />
-								<label for="sp-chk2">作业事件</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk3" />
-								<label for="sp-chk3">课程通知</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk4" />
-								<label for="sp-chk4">站内通知</label>
-							</li>
-						</ul>
-					</div>
-					
-					<div class="links-block left-sep">
-						<h4>
-							<a href="#">
-								<span>Help Desk</span>
-							</a>
-						</h4>
-						
-						<ul class="list-unstyled">
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Support Center
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Submit a Ticket
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Domains Protocol
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Terms of Service
-								</a>
-							</li>
-						</ul>
-					</div>
-					
-				</div>
-				
-			</div>
-		
-		</div>
-		
-	</div>
+	<?php require("setting-pane.php"); ?>
 <!-- 	<div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
  -->	
 	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
@@ -150,227 +71,7 @@
 		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
 		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
 		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
-		<div class="sidebar-menu toggle-others fixed">
-			
-			<div class="sidebar-menu-inner">	
-				
-				<header class="logo-env">
-					
-					<!-- logo -->
-					<div class="logo">
-						<a href="index.php" class="logo-expanded">
-							<img src="assets/images/logo@2x.png" width="80" alt="" />
-						</a>
-						
-						<a href="index.php" class="logo-collapsed">
-							<img src="assets/images/logo-collapsed@2x.png" width="40" alt="" />
-						</a>
-					</div>
-					
-					<!-- This will toggle the mobile menu and will be visible only on mobile devices -->
-					<div class="mobile-menu-toggle visible-xs">
-						<a href="#" data-toggle="user-info-menu">
-							<i class="fa-bell-o"></i>
-							<span class="badge badge-success">7</span>
-						</a>
-						
-						<a href="#" data-toggle="mobile-menu">
-							<i class="fa-bars"></i>
-						</a>
-					</div>
-					
-					<!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
-					<div class="settings-icon">
-						<a href="#" data-toggle="settings-pane" data-animate="true">
-							<i class="linecons-cog"></i>
-						</a>
-					</div>
-					
-								
-				</header>
-						
-				
-						
-				<ul id="main-menu" class="main-menu">
-					<!-- add class "multiple-expanded" to allow multiple submenus to open -->
-					<!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-
-					<!-- 课程 -->
-					<li>
-						<a href="#">
-							<i class="linecons-cog"></i>
-							<span class="title">课程</span>
-						</a>
-						<ul>
-							<li>
-								<a href="course-list.php">
-									<span class="title">课程列表</span>
-								</a>
-							</li>
-							<li>
-								<a href="course-info.php">
-									<span class="title">课程介绍</span>
-								</a>
-							</li>
-							<li>
-								<a href="course-teacher-info.php">
-									<span class="title">教师介绍</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 小组 -->
-					<li>
-						<a href="#">
-							<i class="linecons-desktop"></i>
-							<span class="title">小组</span>
-						</a>
-						<ul>
-							<li>
-								<a href="#">
-									<span class="title">软件需求分析与设计</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-join.php">
-											<span class="title">加入小组</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">
-									<span class="title">项目管理与案例分析</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-join.php">
-											<span class="title">加入小组</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">
-									<span class="title">软件质量保证与测试</span>
-								</a>
-								<ul>
-									<li class="active">
-										<a href="group-info.php">
-											<span class="title">小组详细</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-setup.php">
-											<span class="title">建立小组</span>
-										</a>
-									</li>
-									<li>
-										<a href="group-join.php">
-											<span class="title">加入小组</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 作业 -->
-					<li>
-						<a href="#">
-							<i class="linecons-note"></i>
-							<span class="title">作业</span>
-						</a>
-						<ul>
-							<li>
-								<a href="homework-list.php">
-									<span class="title">作业列表</span>
-								</a>
-							</li>
-							<li>
-								<a href="homework-info.html">
-									<span class="title">作业详细</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 课程资料 -->
-					<li>
-						<a href="#">
-							<i class="linecons-star"></i>
-							<span class="title">资料</span>
-						</a>
-						<ul>
-							<li>
-								<a href="file-list.php">
-									<span class="title">资料列表</span>
-								</a>
-							</li>
-							<li>
-								<a href="file-add.php">
-									<span class="title">新的资料</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<!-- 消息 -->
-					<li>
-						<a href="#">
-							<i class="linecons-mail"></i>
-							<span class="title">消息</span>
-							<span class="label label-success pull-right">5</span>
-						</a>
-						<ul>
-							<li>
-								<a href="message-received-list.html">
-									<span class="title">收信箱</span>
-								</a>
-							</li>
-							<li>
-								<a href="message-sent-list.html">
-									<span class="title">已发送</span>
-								</a>
-							</li>
-							<li>
-								<a href="message-view.html">
-									<span class="title">查看消息</span>
-								</a>
-							</li>
-							<li>
-								<a href="message-write.html">
-									<span class="title">写消息</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-						
-			</div>
-			
-		</div>
+		<?php require("sidebar.php"); ?>
 		
 		<div class="main-content">
 					
@@ -510,7 +211,7 @@
 							</li>
 							
 							<li class="external">
-								<a href="blank-sidebar.html">
+								<a href="blank-sidebar.php">
 									<span>All Messages</span>
 									<i class="fa-link-ext"></i>
 								</a>
@@ -661,25 +362,25 @@
 						
 						<ul class="dropdown-menu user-profile-menu list-unstyled">
 							<li>
-								<a href="message-write.html">
+								<a href="message-write.php">
 									<i class="fa-edit"></i>
 									新的消息
 								</a>
 							</li>
 							<li>
-								<a href="password-question-set.html">
+								<a href="password-question-set.php">
 									<i class="fa-wrench"></i>
 									密保设置
 								</a>
 							</li>
 							<li>
-								<a href="profile-main.html">
+								<a href="profile-main.php">
 									<i class="fa-user"></i>
 									个人资料
 								</a>
 							</li>
 							<li class="#">
-								<a href="password-change.html">
+								<a href="password-change.php">
 									<i class="fa-unlock"></i>
 									修改密码
 								</a>
@@ -691,7 +392,7 @@
 								</a>
 							</li>
 							<li class="#">
-								<a href="extra-lockscreen.html">
+								<a href="extra-lockscreen.php">
 									<i class="fa-lock"></i>
 									登出
 								</a>
@@ -714,18 +415,94 @@
 			<div class="page-title">
 				
 				<div class="title-env">
-					<h1 class="title">XX，欢迎回来！</h1>
+					<h1 class="title">修改密码</h1>
 					<p class="description"></p>
 				</div>
 				
 				<div class="breadcrumb-env">
 					<ol class="breadcrumb bc-1">
 						<li>
-							<i class="fa-home"></i><strong>主页</strong>
+							<a href="index.php"><i class="fa-home"></i>主页</a>
+						</li>
+						<li>
+							<strong>修改密码</strong>
 						</li>
 					</ol>
 				</div>
 			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">修改密码</h3>
+
+							<div class="panel-options">
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+							</div>
+							<br>
+							<div>
+								<?php
+								if(isset($_GET['error'])){
+									if($_GET['error']==1){
+										echo "<p style='color:RED;font-size:10px'>*两次输入的密码不一致</p>";
+									}
+									else if($_GET['error']==2){
+										echo "<p style='color:RED;font-size:10px'>*旧密码不正确</p>";
+									}
+								}
+								?>
+
+							</div>
+						</div>
+						<div class="panel-body">
+
+							<form role="form" class="form-horizontal" action="password-change.php" method="post">
+								
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="field-1">旧的密码</label>
+									<div class="col-sm-3">
+										<input  type="password" class="form-control" id="field-1" name="old">
+									</div>
+								</div>
+								
+								<div class="form-group-separator"></div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="field-1">新的密码</label>
+									<div class="col-sm-3">
+										<input type="password" class="form-control" id="field-1" name="new">
+									</div>
+								</div>
+
+								<div class="form-group-separator"></div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="field-1">再次输入新的密码</label>
+									<div class="col-sm-3">
+										<input type="password" class="form-control" id="field-1" name="again">
+									</div>
+								</div>
+
+								<div class="form-group-separator"></div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="field-1"></label>
+									
+									<div class="col-sm-5">
+										<input type="submit" name="sub" class="btn btn-secondary btn-single" value="修改"></input>
+									</div>
+								</div>	
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>	
 			
 
 			
@@ -921,3 +698,4 @@
 
 </body>
 </html>
+<?php  }  ?>
