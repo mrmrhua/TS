@@ -301,7 +301,7 @@
 							<td>".$row['course_credit']."</td>
 							<td>".$class_num."</td>
 							<td><a href='course-info.php?cid=".$row['cid']."'>详细</a>
-							<a href='course-info-edit.php'>编辑</a>
+							<a href='course-info-edit.php?cid=".$row['cid']."'>编辑</a>
 							<a href='#'>删除</a></td>
 							</tr>";
 							}
@@ -362,6 +362,6 @@
 
 }
 	else{
-		header("Location:"."../TS/login.php");
+		header("Location:"."../login.php");
 	}
 ?>

@@ -4,10 +4,8 @@
 	require("teacher-info.php");
 	if(isset($_SESSION['IDENTITY']) && $_SESSION['IDENTITY']==1){  //已经登录
 
-<<<<<<< HEAD
+
 ?>
-=======
->>>>>>> origin/master
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -61,7 +59,7 @@
 			<div class="page-title">
 				
 				<div class="title-env">
-					<h1 class="title"><?php echo $_SESSION['name'];?>,欢迎回来！</h1>
+					<h1 class="title">欢迎回来！</h1>
 					<p class="description"></p>
 				</div>
 				
@@ -126,6 +124,6 @@
 
 }
 	else{
-		header("Location:"."../TS/login.php");
+		header("Location:"."../login.php");
 	}
 ?>

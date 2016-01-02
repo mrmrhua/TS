@@ -1,13 +1,48 @@
 <?php
 	session_start();
-	require(dirname(dirname(__FILE__))."/dbconfig.php");
 	if(isset($_SESSION['IDENTITY']) && $_SESSION['IDENTITY']==1){  //已经登录
 		require("course_class.php");
-		require("teacher-info.php");
-		if(isset($_POST['cid']))
-		$course_name="";
+		
+		if(isset($_GET['cid'])){
+			$cid=$_GET['cid'];
+			$sql="select * from course where cid='".$_GET['cid']."'";
+			$result=$db->query($sql);
+			$row = $result->fetch_assoc();
+			$cou_name = $row['course_name'];
+			$credit=$row['course_credit'];
+			$tea_name=$row['teacher_name'];
+			$intro=$row['intro'];
+			$department=$row['course_department'];
+			$outline=$row['outline'];
+			$exam=$row['exam_describe'];
+		
+		if(isset($_POST["submit"])){
+		
+		if(!empty($_POST['input_cou_name'])){
+			//$sql="update course set course_name='".$_POST['input_cou_name']."'where cid='".$cid."';";
+		$sql="insert into course (course_name) values('123');";
+		$db->query($sql);
+		}
+		
+		// $url="course-info-edit.php?cid=".$cid;
+		// echo '<script>alert("提交成功！");location.href="'.$url.'"</script>';
+		}
+		
+		}
+	
+	else{
+		if(isset($_POST["submit"])){
+		if(!empty($_POST["cou_name"])){
+			$sql="insert into course (course_name) values('123');";
+		$db->query($sql);
+		}
+		}
+
+
+	}
 
 ?>
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -50,7 +85,182 @@
 		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
 		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
 		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
-		<?php require("sidebar.php");?>
+		<div class="sidebar-menu toggle-others fixed">
+			
+			<div class="sidebar-menu-inner">	
+				
+				<header class="logo-env">
+					
+					<!-- logo -->
+					<div class="logo">
+						<a  class="logo-expanded">
+							<img src="assets/images/logo@2x.png" width="80" alt="" />
+						</a>
+						
+						<a  class="logo-collapsed">
+							<img src="assets/images/logo-collapsed@2x.png" width="40" alt="" />
+						</a>
+					</div>
+					
+					<!-- This will toggle the mobile menu and will be visible only on mobile devices -->
+					<div class="mobile-menu-toggle visible-xs">
+						<a href="#" data-toggle="user-info-menu">
+							<i class="fa-bell-o"></i>
+							<span class="badge badge-success">7</span>
+						</a>
+						
+						<a href="#" data-toggle="mobile-menu">
+							<i class="fa-bars"></i>
+						</a>
+					</div>
+					
+					<!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
+					<div class="settings-icon">
+						<a href="#" data-toggle="settings-pane" data-animate="true">
+							<i class="linecons-cog"></i>
+						</a>
+					</div>
+					
+								
+				</header>
+						
+				
+						
+				<ul id="main-menu" class="main-menu">
+					<!-- add class "multiple-expanded" to allow multiple submenus to open -->
+					<!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+
+					<!-- 课程 -->
+					<li class="opened active">
+						<a href="#">
+							<i class="linecons-cog"></i>
+							<span class="title">课程</span>
+						</a>
+						<ul>
+							<li>
+								<a href="course-list.php">
+									<span class="title">课程列表</span>
+								</a>
+							</li>
+							<li class="active">
+								<a href="course-info-edit.php">
+									<span class="title">新的课程</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					<!-- 班级 -->
+					<li>
+						<a href="#">
+							<i class="linecons-desktop"></i>
+							<span class="title">班级</span>
+						</a>
+						<ul>
+							<li>
+								<a href="class-list.php">
+									<span class="title">班级列表</span>
+								</a>
+							</li>
+							<li>
+								<a href="class-add.php">
+									<span class="title">新的班级</span>
+								</a>
+							</li>
+							
+						</ul>
+					</li>
+
+					<!-- 作业 -->
+					<li>
+						<a href="#">
+							<i class="linecons-note"></i>
+							<span class="title">作业</span>
+						</a>
+						<ul>
+							<li>
+								<a href="homework-add.php">
+									<span class="title">新的作业</span>
+								</a>
+							</li>
+							<li>
+								<a href="homework-list.php">
+									<span class="title">作业列表</span>
+								</a>
+							</li>
+							<li>
+								<a href="homework-info.php">
+									<span class="title">作业详细</span>
+								</a>
+							</li>
+							<li>
+								<a href="homework-grade.php">
+									<span class="title">作业批改</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					<!-- 课程资料 -->
+					<li>
+						<a href="#">
+							<i class="linecons-star"></i>
+							<span class="title">资料</span>
+						</a>
+						<ul>
+							<li>
+								<a href="file-list.php">
+									<span class="title">资料列表</span>
+								</a>
+							</li>
+							<li>
+								<a href="file-unchecked-list.php">
+									<span class="title">待审核资料</span>
+								</a>
+							</li>
+							<li>
+								<a href="file-add.php">
+									<span class="title">新的资料</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					<!-- 消息 -->
+					<li>
+						<a href="#">
+							<i class="linecons-mail"></i>
+							<span class="title">消息</span>
+							<span class="label label-success pull-right">5</span>
+						</a>
+						<ul>
+							<li>
+								<a href="message-received-list.php">
+									<span class="title">收信箱</span>
+								</a>
+							</li>
+							<li>
+								<a href="message-sent-list.php">
+									<span class="title">已发送</span>
+								</a>
+							</li>
+							<li>
+								<a href="message-view.php">
+									<span class="title">查看消息</span>
+								</a>
+							</li>
+							<li>
+								<a href="message-write.php">
+									<span class="title">写消息</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+						
+			</div>
+			
+		</div>
 		
 		<div class="main-content">
 					
@@ -62,7 +272,7 @@
 				
 				<div class="title-env">
 					<h1 class="title">编辑课程</h1>
-					<p class="description">教师编辑课程，填写课程介绍信息</p>
+					<p class="description">教师新建或编辑课程，填写课程介绍信息</p>
 				</div>
 				
 				<div class="breadcrumb-env">
@@ -74,7 +284,7 @@
 							<a href="course-list.php">课程</a>
 						</li>
 						<li>
-							<strong>新的课程</strong>
+							<strong>编辑课程</strong>
 						</li>
 					</ol>
 				</div>
@@ -95,13 +305,13 @@
 						</div>
 						<div class="panel-body">
 							
-							<form role="form" class="form-horizontal">
+							<form method="post" action="#" role="form" class="form-horizontal">
 								
 								<div class="form-group">
 									<label class="col-sm-2 control-label" for="field-1">课程名称</label>
 									
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="field-1" name="course_name" placeholder="$courses['cid']">
+										<input type="text" class="form-control" id="field-1" name="input_cou_name" placeholder="<?php echo $cou_name;?>">
 									</div>
 								</div>
 								
@@ -111,7 +321,7 @@
 									<label class="col-sm-2 control-label" for="field-2">学分</label>
 									
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="field-2" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-2" placeholder="<?php echo $credit;?>">
 									</div>
 								</div>
 								
@@ -121,7 +331,7 @@
 									<label class="col-sm-2 control-label" for="field-3">开课院系</label>
 									
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="field-3" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-3" placeholder="<?php echo $department;?>">
 									</div>
 								</div>
 
@@ -131,7 +341,7 @@
 									<label class="col-sm-2 control-label" for="field-4">授课教师</label>
 									
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="field-4" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-4" placeholder="<?php echo $tea_name;?>">
 									</div>
 								</div>
 
@@ -141,7 +351,7 @@
 									<label class="col-sm-2 control-label" for="field-5">课程简介</label>
 									
 									<div class="col-sm-5">
-										<textarea class="form-control autogrow" cols="5" id="field-5" placeholder="I will grow as you enter new lines."></textarea>
+										<textarea class="form-control autogrow" cols="5" id="field-5" placeholder="<?php echo $intro;?>"></textarea>
 									</div>
 								</div>
 
@@ -151,7 +361,7 @@
 									<label class="col-sm-2 control-label" for="field-6">课程大纲</label>
 									
 									<div class="col-sm-5">
-										<textarea class="form-control autogrow" cols="5" id="field-6" placeholder="I will grow as you enter new lines."></textarea>
+										<textarea class="form-control autogrow" cols="5" id="field-6" placeholder="<?php echo $outline;?>"></textarea>
 									</div>
 								</div>
 
@@ -161,7 +371,7 @@
 									<label class="col-sm-2 control-label" for="field-7">考核方式</label>
 									
 									<div class="col-sm-5">
-										<textarea class="form-control autogrow" cols="5" id="field-7" placeholder="I will grow as you enter new lines."></textarea>
+										<textarea class="form-control autogrow" cols="5" id="field-7" placeholder="<?php echo $exam;?>"></textarea>
 									</div>
 								</div>
 
@@ -171,7 +381,7 @@
 									<label class="col-sm-2 control-label" for="field-7"></label>
 									
 									<div class="col-sm-5">
-										<button class="btn btn-secondary btn-single">新建课程</button>
+										<input type="submit" value="保存" name="submit" class="btn btn-secondary btn-single"></input>
 									</div>
 								</div>
 								
@@ -356,6 +566,6 @@
 
 }
 	else{
-		header("Location:"."../TS/login.php");
+		header("Location:"."../login.php");
 	}
 ?>

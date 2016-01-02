@@ -3,17 +3,10 @@
 	if(isset($_SESSION['IDENTITY']) && $_SESSION['IDENTITY']==1){  //已经登录
 	require("teacher-info.php");
 	if(isset($_POST["submit"])){
-		// $department = $_POST['input_department'];
 		 $tel = $_POST['input_tel'];
 		 $email = $_POST['input_email'];
-		// //$title=$_POST['input_title'];
 		 $selfintro=$_POST['input_selfintro'];
 		 $result=$_POST['input_result'];
-		// //写入数据库
-		// require(dirname(dirname(__FILE__))."/dbconfig.php");
-		// $db = new mysqli($db_host,$db_username,$db_password,$db_database);
-		// $sql = "update teacher set paper_intro='".$result."' , tel='".$tel."', email='".$email."' , intro='".$selfintro."' where account='".$_SESSION['id']."';";
-		// $db->query($sql);
 		require(dirname(dirname(__FILE__))."/dbconfig.php");
 		$db = new mysqli($db_host,$db_username,$db_password,$db_database);
 		if(!empty($tel)){
@@ -300,7 +293,7 @@
 						</div>
 						<div class="panel-body">
 							
-							<form role="form" class="form-horizontal" action="profile-edit.php" method="post">
+							<form role="form" class="form-horizontal" action="#" method="post">
 								
 								<div class="form-group">
 									<label class="col-sm-2 control-label" for="field-1">姓名</label>
@@ -376,7 +369,7 @@
 									<label class="col-sm-2 control-label" for="field-7"></label>
 									
 									<div class="col-sm-5">
-										<input type="submit" name="submit" value="保存" class="btn btn-secondary btn-single"></button>
+										<input  type="submit" name="submit" value="保存" class="btn btn-secondary btn-single"></button>
 									</div>
 								</div>
 								

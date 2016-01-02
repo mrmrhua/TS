@@ -3,11 +3,19 @@
 	require(dirname(dirname(__FILE__))."/dbconfig.php");
 	if(isset($_SESSION['IDENTITY']) && $_SESSION['IDENTITY']==1){  //已经登录
 		require("course_class.php");
-		require("teacher-info.php");
-		$coursename="";
+
 		if(isset($_GET['cid'])){
-			$row = $course_result->fetch_assoc();
-			$coursename = $row['course_name'];
+			$sql="select * from course where cid='".$_GET['cid']."'";
+			$result=$db->query($sql);
+			$row = $result->fetch_assoc();
+			$cou_name = $row['course_name'];
+			$credit=$row['course_credit'];
+			$tea_name=$row['teacher_name'];
+			$intro=$row['intro'];
+			$department=$row['course_department'];
+			$outline=$row['outline'];
+			$exam=$row['exam_describe'];
+
 		}
 
 ?>
@@ -277,7 +285,7 @@
 								<label class="col-sm-2 control-label" for="field-2">课程名称</label>
 								
 								<div class="col-sm-5">
-									<?php echo $coursename;?>
+									<?php echo $cou_name;?>
 								</div>
 							</div>
 							
@@ -287,7 +295,7 @@
 								<label class="col-sm-2 control-label" for="field-2">学分</label>
 								
 								<div class="col-sm-5">
-									2.5
+									<?php echo $credit;?>
 								</div>
 							</div>
 							
@@ -297,7 +305,7 @@
 								<label class="col-sm-2 control-label" for="field-3">开课院系</label>
 								
 								<div class="col-sm-5">
-									计算机学院
+									<?php echo $department;?>
 								</div>
 							</div>
 
@@ -307,7 +315,7 @@
 								<label class="col-sm-2 control-label" for="field-4">授课教师</label>
 								
 								<div class="col-sm-5">
-									邢卫 刘玉生
+									<?php echo $tea_name;?>
 								</div>
 							</div>
 
@@ -317,7 +325,7 @@
 								<label class="col-sm-2 control-label" for="field-5">课程简介</label>
 								
 								<div class="col-sm-5">
-									<p>balabalabala</p>
+									<p><?php echo $intro;?></p>
 								</div>
 							</div>
 
@@ -327,10 +335,7 @@
 								<label class="col-sm-2 control-label" for="field-6">课程大纲</label>
 								
 								<div class="col-sm-5">
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
+									<p><?php echo $outline;?></p>
 									
 								</div>
 							</div>
@@ -341,11 +346,8 @@
 								<label class="col-sm-2 control-label" for="field-7">考核方式</label>
 								
 								<div class="col-sm-5">
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
-									<p>balabalabala</p>
+									<p><?php echo $exam;?></p>
+								
 								</div>
 							</div>
 
@@ -355,7 +357,7 @@
 								<label class="col-sm-2 control-label" for="field-7"></label>
 								
 								<div class="col-sm-5">
-									<a href="course-info-edit.php"><button class="btn btn-secondary btn-single">编辑</button></a>
+									<a href=<?php echo "'course-info-edit.php?".$_GET['cid']."'";?>><button class="btn btn-secondary btn-single">编辑</button></a>
 								</div>
 							</div>
 							</form>
@@ -539,6 +541,6 @@
 
 }
 	else{
-		header("Location:"."../TS/login.php");
+		header("Location:"."../login.php");
 	}
 ?>
